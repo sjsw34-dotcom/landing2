@@ -129,8 +129,16 @@ export default function Home() {
   return (
     <div className="bg-white text-slate-800">
       {/* Hero Section (공감) */}
-      <section className="gradient-bg min-h-[100vh] sm:min-h-[90vh] lg:min-h-[80vh] flex items-center justify-center text-center px-4 sm:px-6 py-16 sm:py-20">
-        <div className="max-w-3xl w-full animate-fade-in">
+      <section className="gradient-bg min-h-[100vh] sm:min-h-[90vh] lg:min-h-[80vh] flex items-center justify-center text-center px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+        {/* 마스코트 - Hero 섹션 */}
+        <div className="absolute bottom-0 right-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 opacity-10 sm:opacity-15 pointer-events-none">
+          <img
+            src="/images/hero/promo (1).png"
+            alt="마스코트"
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div className="max-w-3xl w-full animate-fade-in relative z-10">
           <p className="text-accent font-medium tracking-widest mb-4 text-xs sm:text-sm">FATE THERAPY</p>
           <h1 className="serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-6 sm:mb-8 px-2">
             결정을 내려야 하는데<br />
@@ -154,70 +162,47 @@ export default function Home() {
       </section>
 
       {/* Expert Section (가치 제시) */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+      <section className="py-12 sm:py-16 lg:py-24 bg-slate-50 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* 전문가 프로필 이미지 영역 */}
             <div className="relative max-w-sm mx-auto md:max-w-none">
-              <div className="relative">
-                {/* 메인 이미지 프레임 */}
-                <div className="aspect-[3/4] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
-                  <img
-                    src="/images/hero/license.jpg"
-                    alt="명리심리상담사 자격증"
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                  {/* 이미지 오버레이 효과 */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
-                </div>
-                
-                {/* 경력 배지 */}
-                <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-2xl border-2 border-accent/20 transform hover:scale-105 transition-transform">
-                  <div className="flex items-center gap-2 mb-1">
-                    <i className="fas fa-award text-accent text-lg sm:text-xl"></i>
-                    <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800">15년</p>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-500 font-medium">명리 심리학 연구</p>
-                </div>
-                
-                {/* 장식 요소 */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 sm:w-32 sm:h-32 bg-accent/10 rounded-full blur-3xl -z-10"></div>
+              <div className="aspect-[3/4] rounded-lg overflow-hidden bg-slate-200">
+                <img
+                  src="/images/hero/license.jpg"
+                  alt="명리심리상담사 자격증"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 bg-white p-3 sm:p-4 rounded-lg shadow-md border border-slate-200">
+                <p className="text-xl sm:text-2xl font-bold text-slate-800">15년</p>
+                <p className="text-xs text-slate-500">명리 심리학 연구</p>
               </div>
             </div>
             
             {/* 전문가 소개 텍스트 영역 */}
             <div className="mt-8 md:mt-0">
-              <div className="inline-block mb-4">
-                <span className="bg-accent/10 text-accent px-4 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider">
-                  전문가 인증
-                </span>
-              </div>
-              <h2 className="serif text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 text-center md:text-left text-slate-900 leading-tight">
+              <p className="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4">전문가 인증</p>
+              <h2 className="serif text-2xl sm:text-3xl mb-4 sm:mb-6 text-center md:text-left text-slate-900 leading-tight">
                 3,000명의 인생 전환점을<br className="hidden sm:block" />
                 <span className="text-accent">함께 해온 데이터의 힘</span>
               </h2>
               <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8 text-base sm:text-lg">
                 단순한 길흉화복을 점치는 것이 아닙니다. 명리심리상담사 1급 전문가가 당신의 타고난 기질과 다가올 운의 흐름을 과학적으로 분석하여 최적의 선택 시기를 제안합니다.
               </p>
-              <ul className="space-y-3 sm:space-y-4">
-                <li className="flex items-center gap-3 bg-white/50 p-3 sm:p-4 rounded-xl border border-slate-100 hover:shadow-md transition-all">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-check-circle text-accent text-lg sm:text-xl"></i>
-                  </div>
-                  <span className="font-medium text-sm sm:text-base text-slate-800">명리심리상담사 1급</span>
+              <ul className="space-y-2 sm:space-y-3">
+                <li className="flex items-center gap-3">
+                  <i className="fas fa-check-circle text-accent text-base sm:text-lg"></i>
+                  <span className="text-sm sm:text-base text-slate-700">명리심리상담사 1급</span>
                 </li>
-                <li className="flex items-center gap-3 bg-white/50 p-3 sm:p-4 rounded-xl border border-slate-100 hover:shadow-md transition-all">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-check-circle text-accent text-lg sm:text-xl"></i>
-                  </div>
-                  <span className="font-medium text-sm sm:text-base text-slate-800">가족심리상담사 1급</span>
+                <li className="flex items-center gap-3">
+                  <i className="fas fa-check-circle text-accent text-base sm:text-lg"></i>
+                  <span className="text-sm sm:text-base text-slate-700">가족심리상담사 1급</span>
                 </li>
-                <li className="flex items-center gap-3 bg-white/50 p-3 sm:p-4 rounded-xl border border-slate-100 hover:shadow-md transition-all">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-check-circle text-accent text-lg sm:text-xl"></i>
-                  </div>
-                  <span className="font-medium text-sm sm:text-base text-slate-800">사주명리학 15년 심층 연구</span>
+                <li className="flex items-center gap-3">
+                  <i className="fas fa-check-circle text-accent text-base sm:text-lg"></i>
+                  <span className="text-sm sm:text-base text-slate-700">사주명리학 15년 심층 연구</span>
                 </li>
               </ul>
             </div>
@@ -226,12 +211,20 @@ export default function Home() {
       </section>
 
       {/* Value Section (구체적 가치) */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-white">
-        <div className="max-w-5xl mx-auto text-center mb-10 sm:mb-16">
+      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
+        {/* 마스코트 - Value 섹션 */}
+        <div className="absolute top-0 left-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 opacity-8 sm:opacity-12 pointer-events-none hidden sm:block">
+          <img
+            src="/images/hero/promo (2).png"
+            alt="마스코트"
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div className="max-w-5xl mx-auto text-center mb-10 sm:mb-16 relative z-10">
           <h2 className="serif text-2xl sm:text-3xl mb-3 sm:mb-4 text-slate-900 px-4">운명테라피가 드리는<br />100페이지 인생 지도</h2>
           <p className="text-slate-500 text-sm sm:text-base px-4">이 분석서를 읽는 것만으로도 당신의 앞날이 선명해집니다.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
           <div className="p-6 sm:p-8 rounded-2xl border border-slate-100 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95">
             <div className="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-4 sm:mb-6 text-lg sm:text-xl">
               <i className="fas fa-star"></i>
@@ -257,8 +250,16 @@ export default function Home() {
       </section>
 
       {/* Differentiation (차별화) */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-slate-900 text-white relative overflow-hidden">
+        {/* 마스코트 - Differentiation 섹션 */}
+        <div className="absolute bottom-0 left-0 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 opacity-8 sm:opacity-12 pointer-events-none hidden sm:block">
+          <img
+            src="/images/hero/promo (3).png"
+            alt="마스코트"
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="serif text-2xl sm:text-3xl text-center mb-10 sm:mb-16 px-4">왜 <span className="text-accent italic">운명테라피</span>여야 할까요?</h2>
           <div className="grid md:grid-cols-2 gap-0 border border-slate-700 rounded-2xl sm:rounded-3xl overflow-hidden">
             <div className="p-6 sm:p-8 lg:p-10 bg-slate-800/50">
@@ -354,8 +355,16 @@ export default function Home() {
       </section>
 
       {/* Sample (투명성) */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+        {/* 마스코트 - Sample 섹션 */}
+        <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 opacity-8 sm:opacity-12 pointer-events-none hidden md:block">
+          <img
+            src="/images/hero/promo (4).png"
+            alt="마스코트"
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="serif text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 text-slate-900 px-4">
               실제 분석서는 이렇게 제공됩니다
