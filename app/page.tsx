@@ -12,6 +12,9 @@ export default function Home() {
 
   const [showNotification, setShowNotification] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [currentReview, setCurrentReview] = useState(0);
 
@@ -101,7 +104,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (showModal) {
+    if (showModal || showPrivacyNotice || showPrivacyPolicy || showTerms) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -109,7 +112,7 @@ export default function Home() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [showModal]);
+  }, [showModal, showPrivacyNotice, showPrivacyPolicy, showTerms]);
 
   useEffect(() => {
     const reviewInterval = setInterval(() => {
@@ -142,16 +145,16 @@ export default function Home() {
           <p className="text-accent font-semibold tracking-widest mb-6 text-sm sm:text-base">FATE THERAPY</p>
           <h1 className="serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.3] mb-8 sm:mb-10 px-2 font-bold">
             결정을 내려야 하는데<br />
-            <span className="text-accent sm:gold-text">확신이 서지 않을 때가 있습니다</span>
+            <span className="text-accent drop-shadow-lg sm:gold-text">확신이 서지 않을 때가 있습니다</span>
           </h1>
-          <div className="space-y-4 sm:space-y-5 text-white text-lg sm:text-xl md:text-2xl font-medium px-2">
+          <div className="space-y-4 sm:space-y-5 text-white text-lg sm:text-xl md:text-2xl font-semibold px-2">
             <p>이직? 결혼? 투자?</p>
             <p>지금이 정말 맞는 타이밍일까요?</p>
-            <p className="pt-6 sm:pt-8 text-white/90 font-semibold italic text-base sm:text-lg md:text-xl">&ldquo;당신의 고민은 운명의 흐름을 읽지 못했기 때문일지 모릅니다.&rdquo;</p>
+            <p className="pt-6 sm:pt-8 text-white font-bold italic text-base sm:text-lg md:text-xl">&ldquo;당신의 고민은 운명의 흐름을 읽지 못했기 때문일지 모릅니다.&rdquo;</p>
           </div>
           <div className="mt-10 sm:mt-14 flex flex-col items-center gap-5 sm:gap-6">
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => setShowPrivacyNotice(true)}
               className="bg-accent hover:bg-accent/90 active:scale-95 text-slate-900 px-10 sm:px-14 py-5 sm:py-6 rounded-full text-lg sm:text-xl font-bold transition-all shadow-2xl hover:scale-105 w-full sm:w-auto max-w-sm"
             >
               무료 사주 미리보기
@@ -437,7 +440,7 @@ export default function Home() {
           <div className="bg-slate-900 p-6 sm:p-10 lg:p-12 text-center text-white">
             <p className="text-accent uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-xs sm:text-sm mb-3 sm:mb-4">LIMITED OFFER</p>
             <h2 className="serif text-2xl sm:text-3xl mb-3 sm:mb-4">운명테라피 인생 지도</h2>
-            <p className="text-slate-400 text-base sm:text-lg mb-4 sm:mb-6">15년 전문성을 담은 100페이지 분석서</p>
+            <p className="text-slate-200 text-base sm:text-lg mb-4 sm:mb-6 font-medium">15년 전문성을 담은 100페이지 분석서</p>
 
             {/* 카운트다운 타이머 */}
             <div className="bg-slate-800/50 rounded-xl p-4 sm:p-6 border border-accent/20">
@@ -475,36 +478,36 @@ export default function Home() {
               <span className="text-slate-300 line-through text-lg sm:text-2xl">₩99,000</span>
               <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 italic">₩39,000</span>
             </div>
-            <p className="text-sm text-slate-600 mb-6 sm:mb-8">
-              1인 기준 · 추가 인원 시 더 큰 할인!
+            <p className="text-base sm:text-lg text-slate-700 mb-6 sm:mb-8 font-medium">
+              1인 기준 · 추가 인원 시 더 큰 할인! 🎉
             </p>
 
-            <ul className="text-left space-y-3 sm:space-y-4 mb-8 sm:mb-10 text-slate-600">
+            <ul className="text-left space-y-3 sm:space-y-4 mb-8 sm:mb-10 text-slate-800">
               <li className="flex items-center gap-3">
-                <i className="fas fa-check text-green-500 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base">100페이지 심층 PDF 분석서</span>
+                <i className="fas fa-check text-green-500 text-base sm:text-lg"></i>
+                <span className="text-base sm:text-lg font-semibold">100페이지 심층 PDF 분석서</span>
               </li>
               <li className="flex items-center gap-3">
-                <i className="fas fa-check text-green-500 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base">11가지 핵심 영역 완전 분석</span>
+                <i className="fas fa-check text-green-500 text-base sm:text-lg"></i>
+                <span className="text-base sm:text-lg font-semibold">11가지 핵심 영역 완전 분석</span>
               </li>
               <li className="flex items-center gap-3">
-                <i className="fas fa-check text-green-500 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base">평생 소장 및 무제한 열람</span>
+                <i className="fas fa-check text-green-500 text-base sm:text-lg"></i>
+                <span className="text-base sm:text-lg font-semibold">평생 소장 및 무제한 열람</span>
               </li>
               <li className="flex items-center gap-3">
-                <i className="fas fa-check text-green-500 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base">불만족 시 100% 환불 (7일 이내)</span>
+                <i className="fas fa-check text-green-500 text-base sm:text-lg"></i>
+                <span className="text-base sm:text-lg font-semibold">불만족 시 100% 환불 (7일 이내)</span>
               </li>
             </ul>
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => setShowPrivacyNotice(true)}
               className="w-full bg-slate-900 text-white py-4 sm:py-5 rounded-2xl text-lg sm:text-xl font-bold hover:bg-slate-800 active:scale-98 transition-all shadow-lg"
             >
               내 인생 지도 확인하기
             </button>
-            <p className="mt-6 text-sm text-slate-400 italic">
-              * {currentMonth}월 {lastDayOfMonth}일 이후 정상가 99,000원으로 환원됩니다.
+            <p className="mt-6 text-sm sm:text-base text-slate-500 italic font-medium">
+              ⚠️ {currentMonth}월 {lastDayOfMonth}일 이후 정상가 99,000원으로 환원됩니다.
             </p>
           </div>
         </div>
@@ -518,29 +521,29 @@ export default function Home() {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-green-50 rounded-full flex items-center justify-center mb-3 sm:mb-4">
                 <i className="fas fa-shield-check text-green-600 text-xl sm:text-2xl"></i>
               </div>
-              <h3 className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">100% 환불 보장</h3>
-              <p className="text-xs sm:text-sm text-slate-500">7일 이내 무조건 환불</p>
+              <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">100% 환불 보장</h3>
+              <p className="text-sm sm:text-base text-slate-700 font-medium">7일 이내 무조건 환불</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-4">
                 <i className="fas fa-lock text-blue-600 text-xl sm:text-2xl"></i>
               </div>
-              <h3 className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">보안 결제</h3>
-              <p className="text-xs sm:text-sm text-slate-500">SSL 암호화 보호</p>
+              <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">보안 결제</h3>
+              <p className="text-sm sm:text-base text-slate-700 font-medium">SSL 암호화 보호</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-50 rounded-full flex items-center justify-center mb-3 sm:mb-4">
                 <i className="fas fa-user-shield text-purple-600 text-xl sm:text-2xl"></i>
               </div>
-              <h3 className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">개인정보 보호</h3>
-              <p className="text-xs sm:text-sm text-slate-500">철저한 비밀 보장</p>
+              <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">개인정보 보호</h3>
+              <p className="text-sm sm:text-base text-slate-700 font-medium">철저한 비밀 보장</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-amber-50 rounded-full flex items-center justify-center mb-3 sm:mb-4">
                 <i className="fas fa-certificate text-amber-600 text-xl sm:text-2xl"></i>
               </div>
-              <h3 className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">전문가 인증</h3>
-              <p className="text-xs sm:text-sm text-slate-500">국가 자격증 보유</p>
+              <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">전문가 인증</h3>
+              <p className="text-sm sm:text-base text-slate-700 font-medium">국가 자격증 보유</p>
             </div>
           </div>
         </div>
@@ -549,70 +552,72 @@ export default function Home() {
       {/* FAQ 섹션 */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-slate-50">
         <div className="max-w-3xl mx-auto">
-          <h2 className="serif text-2xl sm:text-3xl text-center mb-10 sm:mb-16 text-slate-900 px-4">자주 묻는 질문</h2>
+          <h2 className="serif text-3xl sm:text-4xl text-center mb-12 sm:mb-16 text-slate-900 px-4 font-bold">
+            <span className="mr-2">❓</span>자주 묻는 질문
+          </h2>
           <div className="space-y-3 sm:space-y-4">
-            <details className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 card-shadow cursor-pointer group">
-              <summary className="font-bold text-base sm:text-lg text-slate-800 list-none flex items-center justify-between gap-4">
-                <span>분석서는 언제 받을 수 있나요?</span>
+            <details className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-7 card-shadow cursor-pointer group border border-slate-200">
+              <summary className="font-bold text-base sm:text-lg text-slate-900 list-none flex items-center justify-between gap-4">
+                <span>📅 분석서는 언제 받을 수 있나요?</span>
                 <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0"></i>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                결제 후 영업일 기준 3~5일 이내에 입력하신 이메일로 PDF 파일이 발송됩니다.
+              <p className="mt-4 text-slate-800 leading-relaxed text-base sm:text-lg font-medium">
+                결제 후 영업일 기준 3~5일 이내에 입력하신 이메일로 PDF 파일이 발송됩니다.<br />
                 명절이나 주말의 경우 소요 시간이 다소 길어질 수 있습니다.
               </p>
             </details>
 
-            <details className="bg-white rounded-2xl p-6 card-shadow cursor-pointer group">
-              <summary className="font-bold text-lg text-slate-800 list-none flex items-center justify-between">
-                <span>환불 정책은 어떻게 되나요?</span>
-                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform"></i>
+            <details className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-7 card-shadow cursor-pointer group border border-slate-200">
+              <summary className="font-bold text-base sm:text-lg text-slate-900 list-none flex items-center justify-between gap-4">
+                <span>💰 환불 정책은 어떻게 되나요?</span>
+                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0"></i>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                분석서를 받으신 후 7일 이내 불만족 시 100% 환불해드립니다.
+              <p className="mt-4 text-slate-800 leading-relaxed text-base sm:text-lg font-medium">
+                분석서를 받으신 후 7일 이내 불만족 시 100% 환불해드립니다.<br />
                 단, 환불 사유를 간단히 작성해 주시면 서비스 개선에 참고하겠습니다.
               </p>
             </details>
 
-            <details className="bg-white rounded-2xl p-6 card-shadow cursor-pointer group">
-              <summary className="font-bold text-lg text-slate-800 list-none flex items-center justify-between">
-                <span>출생 시간을 모르는 경우에도 가능한가요?</span>
-                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform"></i>
+            <details className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-7 card-shadow cursor-pointer group border border-slate-200">
+              <summary className="font-bold text-base sm:text-lg text-slate-900 list-none flex items-center justify-between gap-4">
+                <span>⏰ 출생 시간을 모르는 경우에도 가능한가요?</span>
+                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0"></i>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                출생 시간을 모르시는 경우 '시간 미상'으로 선택하시면 됩니다.
+              <p className="mt-4 text-slate-800 leading-relaxed text-base sm:text-lg font-medium">
+                출생 시간을 모르시는 경우 '시간 미상'으로 선택하시면 됩니다.<br />
                 다만, 시(時)주가 없어 분석의 정확도가 다소 낮아질 수 있습니다.
               </p>
             </details>
 
-            <details className="bg-white rounded-2xl p-6 card-shadow cursor-pointer group">
-              <summary className="font-bold text-lg text-slate-800 list-none flex items-center justify-between">
-                <span>정말 과학적인 분석인가요?</span>
-                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform"></i>
+            <details className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-7 card-shadow cursor-pointer group border border-slate-200">
+              <summary className="font-bold text-base sm:text-lg text-slate-900 list-none flex items-center justify-between gap-4">
+                <span>🔬 정말 과학적인 분석인가요?</span>
+                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0"></i>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                사주명리학은 동양 철학과 통계학이 결합된 학문입니다.
+              <p className="mt-4 text-slate-800 leading-relaxed text-base sm:text-lg font-medium">
+                사주명리학은 동양 철학과 통계학이 결합된 학문입니다.<br />
                 15년간 3,000명 이상의 상담 데이터를 기반으로 패턴을 분석하여 제공합니다.
               </p>
             </details>
 
-            <details className="bg-white rounded-2xl p-6 card-shadow cursor-pointer group">
-              <summary className="font-bold text-lg text-slate-800 list-none flex items-center justify-between">
-                <span>개인정보는 안전한가요?</span>
-                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform"></i>
+            <details className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-7 card-shadow cursor-pointer group border border-slate-200">
+              <summary className="font-bold text-base sm:text-lg text-slate-900 list-none flex items-center justify-between gap-4">
+                <span>🔒 개인정보는 안전한가요?</span>
+                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0"></i>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                모든 개인정보는 SSL 암호화되어 저장되며, 분석 목적 외에는 절대 사용되지 않습니다.
+              <p className="mt-4 text-slate-800 leading-relaxed text-base sm:text-lg font-medium">
+                모든 개인정보는 SSL 암호화되어 저장되며, 분석 목적 외에는 절대 사용되지 않습니다.<br />
                 분석 완료 후 6개월 이내 모든 정보는 자동 삭제됩니다.
               </p>
             </details>
 
-            <details className="bg-white rounded-2xl p-6 card-shadow cursor-pointer group">
-              <summary className="font-bold text-lg text-slate-800 list-none flex items-center justify-between">
-                <span>추가 비용이 발생하나요?</span>
-                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform"></i>
+            <details className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-7 card-shadow cursor-pointer group border border-slate-200">
+              <summary className="font-bold text-base sm:text-lg text-slate-900 list-none flex items-center justify-between gap-4">
+                <span>💳 추가 비용이 발생하나요?</span>
+                <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0"></i>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                39,000원 결제 후 추가 비용은 일체 발생하지 않습니다.
+              <p className="mt-4 text-slate-800 leading-relaxed text-base sm:text-lg font-medium">
+                39,000원 결제 후 추가 비용은 일체 발생하지 않습니다.<br />
                 부적 구매나 추가 상담 권유는 절대 하지 않습니다.
               </p>
             </details>
@@ -629,13 +634,330 @@ export default function Home() {
             통계와 철학의 힘으로 당신의 오늘과 내일을 응원합니다.
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-6 sm:mb-8 text-[10px] sm:text-xs font-medium uppercase tracking-widest px-4">
-            <a href="#" className="hover:text-white transition-colors">이용약관</a>
-            <a href="#" className="hover:text-white transition-colors">개인정보처리방침</a>
-            <a href="#" className="hover:text-white transition-colors">환불규정</a>
+            <button onClick={() => setShowTerms(true)} className="hover:text-white transition-colors cursor-pointer">이용약관</button>
+            <button onClick={() => setShowPrivacyPolicy(true)} className="hover:text-white transition-colors cursor-pointer">개인정보처리방침</button>
+            <button onClick={() => setShowModal(true)} className="hover:text-white transition-colors cursor-pointer">환불규정</button>
           </div>
           <p className="text-[9px] sm:text-[10px] opacity-30">© 2026 FATE THERAPY. ALL RIGHTS RESERVED.</p>
         </div>
       </footer>
+
+      {/* 개인정보 수집 및 이용 동의 공지 창 */}
+      {showPrivacyNotice && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-modal-bg" onClick={() => setShowPrivacyNotice(false)}>
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b border-slate-200 p-4 sm:p-6 flex items-center justify-between rounded-t-2xl sm:rounded-t-3xl z-10">
+              <h2 className="serif text-xl sm:text-2xl text-slate-900 font-bold">🔒 개인정보 수집 및 이용 안내</h2>
+              <button onClick={() => setShowPrivacyNotice(false)} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 active:bg-slate-200 transition-colors flex-shrink-0">
+                <i className="fas fa-times text-slate-400 text-xl"></i>
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8">
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg">
+                <p className="text-blue-800 font-semibold text-base sm:text-lg mb-2">⚠️ 중요 안내</p>
+                <p className="text-blue-700 text-sm sm:text-base leading-relaxed">
+                  본 서비스 이용을 위해 아래 개인정보 수집 및 이용에 대한 동의가 필요합니다.<br />
+                  동의하지 않으실 경우 서비스 이용이 제한될 수 있습니다.
+                </p>
+              </div>
+
+              <div className="space-y-6 mb-8">
+                <div className="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                  <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-4">1. 수집하는 개인정보 항목</h3>
+                  <ul className="space-y-2 text-sm sm:text-base text-slate-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span><strong>필수항목:</strong> 이름, 생년월일, 생시, 음력/양력 구분, 성별, 이메일 주소</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span><strong>선택항목:</strong> 궁금한 점 (서비스 개선을 위한 의견)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                  <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-4">2. 개인정보의 수집 및 이용 목적</h3>
+                  <ul className="space-y-2 text-sm sm:text-base text-slate-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>사주명리 분석서 작성 및 제공</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>분석서 PDF 파일 이메일 발송</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>서비스 이용 및 결제 처리</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">•</span>
+                      <span>고객 문의 및 불만 처리</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                  <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-4">3. 개인정보의 보유 및 이용 기간</h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                    수집된 개인정보는 분석서 제공 완료 후 <strong className="text-slate-900">6개월</strong>간 보관되며,<br />
+                    이후 자동으로 파기됩니다. 단, 관련 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관됩니다.
+                  </p>
+                </div>
+
+                <div className="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                  <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-4">4. 개인정보의 제3자 제공</h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                    당사는 원칙적으로 이용자의 개인정보를 외부에 제공하지 않습니다.<br />
+                    다만, 결제 처리를 위해 결제 대행사에 최소한의 정보(이름, 이메일)가 제공될 수 있습니다.
+                  </p>
+                </div>
+
+                <div className="border border-red-200 rounded-xl p-5 bg-red-50">
+                  <h3 className="font-bold text-lg sm:text-xl text-red-900 mb-4">5. 개인정보 처리 거부 권리</h3>
+                  <p className="text-sm sm:text-base text-red-800 leading-relaxed">
+                    귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.<br />
+                    다만, 동의를 거부하실 경우 서비스 이용이 불가능합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <button
+                  onClick={() => {
+                    setShowPrivacyNotice(false);
+                    setShowPrivacyPolicy(true);
+                  }}
+                  className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-4 rounded-xl font-bold transition-all text-base sm:text-lg"
+                >
+                  전체 약관 보기
+                </button>
+                <button
+                  onClick={() => {
+                    setShowPrivacyNotice(false);
+                    setShowModal(true);
+                  }}
+                  className="flex-1 bg-accent hover:bg-accent/90 text-slate-900 py-4 rounded-xl font-bold transition-all shadow-lg text-base sm:text-lg"
+                >
+                  동의하고 계속하기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 개인정보 처리방침 모달 */}
+      {showPrivacyPolicy && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-modal-bg" onClick={() => setShowPrivacyPolicy(false)}>
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b border-slate-200 p-4 sm:p-6 flex items-center justify-between rounded-t-2xl sm:rounded-t-3xl z-10">
+              <h2 className="serif text-xl sm:text-2xl text-slate-900 font-bold">개인정보 처리방침</h2>
+              <button onClick={() => setShowPrivacyPolicy(false)} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 active:bg-slate-200 transition-colors flex-shrink-0">
+                <i className="fas fa-times text-slate-400 text-xl"></i>
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8 text-sm sm:text-base text-slate-700 leading-relaxed space-y-6">
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제1조 (개인정보의 처리 목적)</h3>
+                <p className="mb-2">운명테라피는 다음의 목적을 위하여 개인정보를 처리합니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>사주명리 분석서 작성 및 제공</li>
+                  <li>서비스 이용 및 결제 처리</li>
+                  <li>고객 문의 및 불만 처리</li>
+                  <li>서비스 개선 및 신규 서비스 개발</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제2조 (개인정보의 처리 및 보유기간)</h3>
+                <p className="mb-2">운명테라피는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.</p>
+                <p className="mb-2"><strong>보유기간:</strong> 분석서 제공 완료 후 6개월 (단, 관련 법령에 따라 보관이 필요한 경우 해당 기간)</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제3조 (처리하는 개인정보의 항목)</h3>
+                <p className="mb-2">운명테라피는 다음의 개인정보 항목을 처리하고 있습니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li><strong>필수항목:</strong> 이름, 생년월일, 생시, 음력/양력 구분, 성별, 이메일 주소</li>
+                  <li><strong>선택항목:</strong> 궁금한 점</li>
+                  <li><strong>자동 수집 항목:</strong> IP주소, 쿠키, 접속 로그 등</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제4조 (개인정보의 제3자 제공)</h3>
+                <p className="mb-2">운명테라피는 원칙적으로 정보주체의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우에는 예외로 합니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>정보주체가 사전에 동의한 경우</li>
+                  <li>결제 처리를 위한 결제 대행사 제공 (최소한의 정보만 제공)</li>
+                  <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제5조 (개인정보의 파기)</h3>
+                <p className="mb-2">운명테라피는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
+                <p className="mb-2"><strong>파기 방법:</strong> 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제6조 (정보주체의 권리·의무 및 행사방법)</h3>
+                <p className="mb-2">정보주체는 다음과 같은 권리를 행사할 수 있습니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>개인정보 열람 요구</li>
+                  <li>개인정보 정정·삭제 요구</li>
+                  <li>개인정보 처리정지 요구</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제7조 (개인정보의 안전성 확보조치)</h3>
+                <p className="mb-2">운명테라피는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>관리적 조치: 내부관리계획 수립·시행, 정기적 직원 교육 등</li>
+                  <li>기술적 조치: 개인정보처리시스템 등의 접근권한 관리, 접근통제시스템 설치, 고유식별정보 등의 암호화, 보안프로그램 설치</li>
+                  <li>물리적 조치: 전산실, 자료보관실 등의 접근통제</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제8조 (개인정보 보호책임자)</h3>
+                <p className="mb-2">운명테라피는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+                <p className="mb-2"><strong>개인정보 보호책임자</strong><br />
+                이메일: privacy@fatetherapy.com<br />
+                연락처: (운영 시간: 평일 09:00 ~ 18:00)</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제9조 (개인정보 처리방침 변경)</h3>
+                <p>이 개인정보 처리방침은 2026년 1월 1일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.</p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-200">
+                <button
+                  onClick={() => {
+                    setShowPrivacyPolicy(false);
+                    setShowPrivacyNotice(true);
+                  }}
+                  className="w-full bg-accent hover:bg-accent/90 text-slate-900 py-4 rounded-xl font-bold transition-all shadow-lg text-base sm:text-lg"
+                >
+                  돌아가기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 이용약관 모달 */}
+      {showTerms && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-modal-bg" onClick={() => setShowTerms(false)}>
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b border-slate-200 p-4 sm:p-6 flex items-center justify-between rounded-t-2xl sm:rounded-t-3xl z-10">
+              <h2 className="serif text-xl sm:text-2xl text-slate-900 font-bold">이용약관</h2>
+              <button onClick={() => setShowTerms(false)} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 active:bg-slate-200 transition-colors flex-shrink-0">
+                <i className="fas fa-times text-slate-400 text-xl"></i>
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8 text-sm sm:text-base text-slate-700 leading-relaxed space-y-6">
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제1조 (목적)</h3>
+                <p>이 약관은 운명테라피(이하 "회사")가 제공하는 사주명리 분석서 서비스(이하 "서비스")의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제2조 (정의)</h3>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>"서비스"란 회사가 제공하는 사주명리 분석서 작성 및 제공 서비스를 의미합니다.</li>
+                  <li>"이용자"란 이 약관에 따라 회사가 제공하는 서비스를 받는 회원 및 비회원을 말합니다.</li>
+                  <li>"분석서"란 이용자가 제공한 정보를 바탕으로 작성된 사주명리 분석 PDF 파일을 의미합니다.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제3조 (약관의 게시와 개정)</h3>
+                <p className="mb-2">회사는 이 약관의 내용을 이용자가 쉽게 알 수 있도록 서비스 초기 화면에 게시합니다.</p>
+                <p>회사는 필요한 경우 관련 법령을 위배하지 않는 범위에서 이 약관을 개정할 수 있으며, 개정된 약관은 서비스 화면에 공지하거나 기타의 방법으로 이용자에게 공지합니다.</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제4조 (서비스의 제공)</h3>
+                <p className="mb-2">회사는 다음과 같은 서비스를 제공합니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>사주명리 분석서 작성 및 제공</li>
+                  <li>분석서 PDF 파일 이메일 발송</li>
+                  <li>서비스 관련 고객 지원</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제5조 (서비스 이용 요금)</h3>
+                <p className="mb-2">서비스 이용 요금은 다음과 같습니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>1인 기준: 39,000원 (정상가 99,000원)</li>
+                  <li>2인 기준: 70,000원 (정상가 198,000원)</li>
+                  <li>3인 기준: 100,000원 (정상가 297,000원)</li>
+                  <li>4인 기준: 125,000원 (정상가 396,000원)</li>
+                </ul>
+                <p className="mt-2">할인 가격은 한정 기간 동안 제공되며, 기간 종료 후 정상가로 환원될 수 있습니다.</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제6조 (결제 및 환불)</h3>
+                <p className="mb-2"><strong>결제:</strong> 서비스 이용 요금은 선불로 결제되며, 결제 완료 후 분석서 작성이 시작됩니다.</p>
+                <p className="mb-2"><strong>환불:</strong> 분석서를 받으신 후 7일 이내 불만족 시 100% 환불해드립니다. 환불 요청은 이메일을 통해 접수할 수 있습니다.</p>
+                <p><strong>환불 불가 사항:</strong> 분석서 제공 완료 후 7일이 경과한 경우, 이용자의 귀책사유로 인한 서비스 미이용 등</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제7조 (서비스 이용 시간)</h3>
+                <p>분석서는 결제 완료 후 영업일 기준 3~5일 이내에 제공됩니다. 명절이나 주말의 경우 소요 시간이 다소 길어질 수 있습니다.</p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제8조 (이용자의 의무)</h3>
+                <p className="mb-2">이용자는 다음 행위를 하여서는 안 됩니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>타인의 개인정보를 도용하거나 부정하게 사용하는 행위</li>
+                  <li>서비스의 안정적 운영을 방해하는 행위</li>
+                  <li>분석서를 무단으로 복제, 배포, 판매하는 행위</li>
+                  <li>기타 관련 법령에 위반되는 행위</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제9조 (면책사항)</h3>
+                <p className="mb-2">회사는 다음의 경우에 대해 책임을 지지 않습니다:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>천재지변, 전쟁, 기간통신사업자의 서비스 중지 등 불가항력으로 인한 서비스 중단</li>
+                  <li>이용자의 귀책사유로 인한 서비스 이용 장애</li>
+                  <li>분석서의 내용에 대한 개인적 해석 및 적용에 따른 결과</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제10조 (분쟁의 해결)</h3>
+                <p>회사와 이용자 간에 발생한 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다.</p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-200">
+                <p className="text-xs text-slate-500 mb-4">본 약관은 2026년 1월 1일부터 시행됩니다.</p>
+                <button
+                  onClick={() => setShowTerms(false)}
+                  className="w-full bg-accent hover:bg-accent/90 text-slate-900 py-4 rounded-xl font-bold transition-all shadow-lg text-base sm:text-lg"
+                >
+                  닫기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 입력 폼 모달 */}
       {showModal && (
@@ -808,7 +1130,7 @@ export default function Home() {
 
       {/* Sticky Mobile CTA */}
       <div className="sticky-cta p-3 sm:p-4 md:hidden">
-        <button onClick={() => setShowModal(true)} className="w-full bg-slate-900 text-white py-4 rounded-xl font-bold shadow-xl active:scale-98 transition-transform text-sm sm:text-base">
+        <button onClick={() => setShowPrivacyNotice(true)} className="w-full bg-slate-900 text-white py-4 rounded-xl font-bold shadow-xl active:scale-98 transition-transform text-sm sm:text-base">
           1인 ₩39,000부터 시작하기
         </button>
       </div>
