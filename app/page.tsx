@@ -129,9 +129,9 @@ export default function Home() {
   return (
     <div className="bg-white text-slate-800">
       {/* Hero Section (공감) */}
-      <section className="gradient-bg min-h-[100vh] sm:min-h-[90vh] lg:min-h-[80vh] flex items-center justify-center text-center px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+      <section className="gradient-bg min-h-[100vh] sm:min-h-[90vh] lg:min-h-[80vh] flex items-center justify-center text-center px-4 sm:px-6 py-12 sm:py-16 lg:py-20 relative overflow-hidden">
         {/* 마스코트 - Hero 섹션 */}
-        <div className="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 opacity-40 sm:opacity-50 pointer-events-none">
+        <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-28 sm:h-28 lg:w-40 lg:h-40 opacity-30 sm:opacity-40 pointer-events-none">
           <img
             src="/images/hero/promo (1).png"
             alt="마스코트"
@@ -139,24 +139,24 @@ export default function Home() {
           />
         </div>
         <div className="max-w-3xl w-full animate-fade-in relative z-10">
-          <p className="text-accent font-medium tracking-widest mb-4 text-xs sm:text-sm">FATE THERAPY</p>
-          <h1 className="serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-6 sm:mb-8 px-2">
+          <p className="text-accent font-semibold tracking-widest mb-6 text-sm sm:text-base">FATE THERAPY</p>
+          <h1 className="serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.3] mb-8 sm:mb-10 px-2 font-bold">
             결정을 내려야 하는데<br />
             <span className="gold-text">확신이 서지 않을 때가 있습니다</span>
           </h1>
-          <div className="space-y-3 sm:space-y-4 text-slate-300 text-base sm:text-lg md:text-xl font-light px-2">
+          <div className="space-y-4 sm:space-y-5 text-white text-lg sm:text-xl md:text-2xl font-medium px-2">
             <p>이직? 결혼? 투자?</p>
             <p>지금이 정말 맞는 타이밍일까요?</p>
-            <p className="pt-4 sm:pt-6 text-white font-medium italic text-sm sm:text-base">&ldquo;당신의 고민은 운명의 흐름을 읽지 못했기 때문일지 모릅니다.&rdquo;</p>
+            <p className="pt-6 sm:pt-8 text-white/90 font-semibold italic text-base sm:text-lg md:text-xl">&ldquo;당신의 고민은 운명의 흐름을 읽지 못했기 때문일지 모릅니다.&rdquo;</p>
           </div>
-          <div className="mt-8 sm:mt-12 flex flex-col items-center gap-4 sm:gap-6">
+          <div className="mt-10 sm:mt-14 flex flex-col items-center gap-5 sm:gap-6">
             <button
               onClick={() => setShowModal(true)}
-              className="bg-accent hover:bg-accent/90 active:scale-95 text-slate-900 px-8 sm:px-12 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold transition-all shadow-2xl hover:scale-105 w-full sm:w-auto max-w-xs"
+              className="bg-accent hover:bg-accent/90 active:scale-95 text-slate-900 px-10 sm:px-14 py-5 sm:py-6 rounded-full text-lg sm:text-xl font-bold transition-all shadow-2xl hover:scale-105 w-full sm:w-auto max-w-sm"
             >
               무료 사주 미리보기
             </button>
-            <i className="fas fa-chevron-down text-accent animate-bounce text-xl sm:text-2xl"></i>
+            <i className="fas fa-chevron-down text-accent animate-bounce text-2xl sm:text-3xl"></i>
           </div>
         </div>
       </section>
@@ -164,7 +164,7 @@ export default function Home() {
       {/* Expert Section (가치 제시) */}
       <section className="py-12 sm:py-16 lg:py-24 bg-slate-50 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-center">
             {/* 전문가 프로필 이미지 영역 */}
             <div className="relative max-w-sm mx-auto md:max-w-none">
               <div className="aspect-[3/4] rounded-lg overflow-hidden bg-slate-200">
@@ -175,34 +175,34 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-white p-3 sm:p-4 rounded-lg shadow-md border border-slate-200">
-                <p className="text-xl sm:text-2xl font-bold text-slate-800">15년</p>
-                <p className="text-xs text-slate-500">명리 심리학 연구</p>
+              <div className="absolute -bottom-4 -right-4 bg-white p-4 sm:p-5 rounded-lg shadow-lg border border-slate-200">
+                <p className="text-2xl sm:text-3xl font-bold text-slate-900">15년</p>
+                <p className="text-xs sm:text-sm text-slate-600 font-medium">명리 심리학 연구</p>
               </div>
             </div>
             
             {/* 전문가 소개 텍스트 영역 */}
-            <div className="mt-8 md:mt-0">
-              <p className="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4">전문가 인증</p>
-              <h2 className="serif text-2xl sm:text-3xl mb-4 sm:mb-6 text-center md:text-left text-slate-900 leading-tight">
+            <div className="mt-10 md:mt-0">
+              <p className="text-sm sm:text-base text-slate-600 mb-4 sm:mb-5 font-medium">전문가 인증</p>
+              <h2 className="serif text-3xl sm:text-4xl mb-5 sm:mb-7 text-center md:text-left text-slate-900 leading-tight font-bold">
                 3,000명의 인생 전환점을<br />
                 <span className="text-accent">함께 해온 데이터의 힘</span>
               </h2>
-              <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8 text-base sm:text-lg">
+              <p className="text-slate-700 leading-relaxed mb-7 sm:mb-9 text-base sm:text-lg font-medium">
                 단순한 길흉화복을 점치는 것이 아닙니다. 명리심리상담사 1급 전문가가 당신의 타고난 기질과 다가올 운의 흐름을 과학적으로 분석하여 최적의 선택 시기를 제안합니다.
               </p>
-              <ul className="space-y-2 sm:space-y-3">
-                <li className="flex items-center gap-3">
-                  <i className="fas fa-check-circle text-accent text-base sm:text-lg"></i>
-                  <span className="text-sm sm:text-base text-slate-700">명리심리상담사 1급</span>
+              <ul className="space-y-3 sm:space-y-4">
+                <li className="flex items-center gap-4">
+                  <i className="fas fa-check-circle text-accent text-lg sm:text-xl"></i>
+                  <span className="text-base sm:text-lg text-slate-800 font-semibold">명리심리상담사 1급</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <i className="fas fa-check-circle text-accent text-base sm:text-lg"></i>
-                  <span className="text-sm sm:text-base text-slate-700">가족심리상담사 1급</span>
+                <li className="flex items-center gap-4">
+                  <i className="fas fa-check-circle text-accent text-lg sm:text-xl"></i>
+                  <span className="text-base sm:text-lg text-slate-800 font-semibold">가족심리상담사 1급</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <i className="fas fa-check-circle text-accent text-base sm:text-lg"></i>
-                  <span className="text-sm sm:text-base text-slate-700">사주명리학 15년 심층 연구</span>
+                <li className="flex items-center gap-4">
+                  <i className="fas fa-check-circle text-accent text-lg sm:text-xl"></i>
+                  <span className="text-base sm:text-lg text-slate-800 font-semibold">사주명리학 15년 심층 연구</span>
                 </li>
               </ul>
             </div>
@@ -220,31 +220,31 @@ export default function Home() {
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="max-w-5xl mx-auto text-center mb-10 sm:mb-16 relative z-10">
-          <h2 className="serif text-2xl sm:text-3xl mb-3 sm:mb-4 text-slate-900 px-4">운명테라피가 드리는<br />100페이지 인생 지도</h2>
-          <p className="text-slate-500 text-sm sm:text-base px-4">이 분석서를 읽는 것만으로도 당신의 앞날이 선명해집니다.</p>
+        <div className="max-w-5xl mx-auto text-center mb-12 sm:mb-16 relative z-10">
+          <h2 className="serif text-3xl sm:text-4xl mb-5 sm:mb-6 text-slate-900 px-4 font-bold">운명테라피가 드리는<br />100페이지 인생 지도</h2>
+          <p className="text-slate-700 text-base sm:text-lg px-4 font-medium">이 분석서를 읽는 것만으로도 당신의 앞날이 선명해집니다.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
-          <div className="p-6 sm:p-8 rounded-2xl border border-slate-100 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95">
-            <div className="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-4 sm:mb-6 text-lg sm:text-xl">
+          <div className="p-7 sm:p-8 rounded-2xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 bg-white">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-5 sm:mb-6 text-xl sm:text-2xl">
               <i className="fas fa-star"></i>
             </div>
-            <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4">인생 황금기 포착</h3>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">언제 도전해야 성과가 극대화되는지, 언제 인내하며 씨앗을 뿌려야 하는지 명확히 짚어드립니다.</p>
+            <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-5 text-slate-900">인생 황금기 포착</h3>
+            <p className="text-slate-800 leading-relaxed text-base sm:text-lg font-medium">언제 도전해야 성과가 극대화되는지, 언제 인내하며 씨앗을 뿌려야 하는지 명확히 짚어드립니다.</p>
           </div>
-          <div className="p-6 sm:p-8 rounded-2xl border border-slate-100 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95">
-            <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-4 sm:mb-6 text-lg sm:text-xl">
+          <div className="p-7 sm:p-8 rounded-2xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 bg-white">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-5 sm:mb-6 text-xl sm:text-2xl">
               <i className="fas fa-coins"></i>
             </div>
-            <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4">재물운의 흐름</h3>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">당신의 그릇에 맞는 재산 증식 방법과 주의해야 할 투자 손실 시기를 상세히 분석합니다.</p>
+            <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-5 text-slate-900">재물운의 흐름</h3>
+            <p className="text-slate-800 leading-relaxed text-base sm:text-lg font-medium">당신의 그릇에 맞는 재산 증식 방법과 주의해야 할 투자 손실 시기를 상세히 분석합니다.</p>
           </div>
-          <div className="p-6 sm:p-8 rounded-2xl border border-slate-100 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 sm:col-span-2 lg:col-span-1">
-            <div className="w-12 h-12 bg-rose-50 rounded-lg flex items-center justify-center text-rose-600 mb-4 sm:mb-6 text-lg sm:text-xl">
+          <div className="p-7 sm:p-8 rounded-2xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 sm:col-span-2 lg:col-span-1 bg-white">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-rose-50 rounded-lg flex items-center justify-center text-rose-600 mb-5 sm:mb-6 text-xl sm:text-2xl">
               <i className="fas fa-heart"></i>
             </div>
-            <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4">인연과 관계</h3>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">당신을 돕는 귀인과 조심해야 할 악연, 그리고 건강한 관계 유지를 위한 맞춤 조언을 담았습니다.</p>
+            <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-5 text-slate-900">인연과 관계</h3>
+            <p className="text-slate-800 leading-relaxed text-base sm:text-lg font-medium">당신을 돕는 귀인과 조심해야 할 악연, 그리고 건강한 관계 유지를 위한 맞춤 조언을 담았습니다.</p>
           </div>
         </div>
       </section>
@@ -260,40 +260,40 @@ export default function Home() {
           />
         </div>
         <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="serif text-2xl sm:text-3xl text-center mb-10 sm:mb-16 px-4">왜 <span className="text-accent italic">운명테라피</span>여야 할까요?</h2>
+          <h2 className="serif text-3xl sm:text-4xl text-center mb-12 sm:mb-16 px-4 font-bold">왜 <span className="text-accent italic">운명테라피</span>여야 할까요?</h2>
           <div className="grid md:grid-cols-2 gap-0 border border-slate-700 rounded-2xl sm:rounded-3xl overflow-hidden">
-            <div className="p-6 sm:p-8 lg:p-10 bg-slate-800/50">
-              <p className="text-slate-400 font-bold mb-6 uppercase tracking-widest text-sm">기존 대면 상담</p>
+            <div className="p-7 sm:p-8 lg:p-10 bg-slate-800/50">
+              <p className="text-slate-300 font-bold mb-7 uppercase tracking-widest text-sm sm:text-base">기존 대면 상담</p>
               <ul className="space-y-5">
-                <li className="flex items-start gap-3 text-slate-400">
-                  <i className="fas fa-times-circle mt-1"></i>
-                  <span>15만원 이상의 높은 비용</span>
+                <li className="flex items-start gap-4">
+                  <i className="fas fa-times-circle mt-1 text-slate-300 text-lg"></i>
+                  <span className="text-slate-200 text-base sm:text-lg font-medium">15만원 이상의 높은 비용</span>
                 </li>
-                <li className="flex items-start gap-3 text-slate-400">
-                  <i className="fas fa-times-circle mt-1"></i>
-                  <span>상담 후 잊혀지는 휘발성 정보</span>
+                <li className="flex items-start gap-4">
+                  <i className="fas fa-times-circle mt-1 text-slate-300 text-lg"></i>
+                  <span className="text-slate-200 text-base sm:text-lg font-medium">상담 후 잊혀지는 휘발성 정보</span>
                 </li>
-                <li className="flex items-start gap-3 text-slate-400">
-                  <i className="fas fa-times-circle mt-1"></i>
-                  <span>부적 강매나 불안 조장</span>
+                <li className="flex items-start gap-4">
+                  <i className="fas fa-times-circle mt-1 text-slate-300 text-lg"></i>
+                  <span className="text-slate-200 text-base sm:text-lg font-medium">부적 강매나 불안 조장</span>
                 </li>
               </ul>
             </div>
-            <div className="p-6 sm:p-8 lg:p-10 bg-slate-800 relative">
-              <div className="absolute top-0 right-0 p-2 sm:p-3 bg-accent text-slate-900 text-[10px] sm:text-xs font-bold uppercase tracking-tighter">RECOMMENDED</div>
-              <p className="text-accent font-bold mb-4 sm:mb-6 uppercase tracking-widest text-xs sm:text-sm">운명테라피 (PDF)</p>
-              <ul className="space-y-4 sm:space-y-5">
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle mt-1 text-accent"></i>
-                  <span className="font-medium text-base sm:text-lg">100페이지 분량의 압도적 체계성</span>
+            <div className="p-7 sm:p-8 lg:p-10 bg-slate-800 relative">
+              <div className="absolute top-0 right-0 p-3 sm:p-4 bg-accent text-slate-900 text-xs sm:text-sm font-bold uppercase tracking-tighter">RECOMMENDED</div>
+              <p className="text-accent font-bold mb-6 sm:mb-7 uppercase tracking-widest text-sm sm:text-base">운명테라피 (PDF)</p>
+              <ul className="space-y-5 sm:space-y-6">
+                <li className="flex items-start gap-4">
+                  <i className="fas fa-check-circle mt-1 text-accent text-lg sm:text-xl"></i>
+                  <span className="font-semibold text-base sm:text-lg text-white">100페이지 분량의 압도적 체계성</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle mt-1 text-accent"></i>
-                  <span className="font-medium text-sm sm:text-base">영구 보관 가능한 나만의 인생 지도</span>
+                <li className="flex items-start gap-4">
+                  <i className="fas fa-check-circle mt-1 text-accent text-lg sm:text-xl"></i>
+                  <span className="font-semibold text-base sm:text-lg text-white">영구 보관 가능한 나만의 인생 지도</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle mt-1 text-accent"></i>
-                  <span className="font-medium text-sm sm:text-base">강매 없는 순수 학술적 분석</span>
+                <li className="flex items-start gap-4">
+                  <i className="fas fa-check-circle mt-1 text-accent text-lg sm:text-xl"></i>
+                  <span className="font-semibold text-base sm:text-lg text-white">강매 없는 순수 학술적 분석</span>
                 </li>
               </ul>
             </div>
@@ -304,7 +304,7 @@ export default function Home() {
       {/* Proof (신뢰 구축) */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-slate-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="serif text-2xl sm:text-3xl text-center mb-10 sm:mb-16 text-slate-900 px-4">먼저 인생 지도를<br /> 받으신 분들의 기록</h2>
+          <h2 className="serif text-3xl sm:text-4xl text-center mb-12 sm:mb-16 text-slate-900 px-4 font-bold">먼저 인생 지도를<br /> 받으신 분들의 기록</h2>
 
           {/* 후기 슬라이더 */}
           <div className="relative min-h-[280px] sm:min-h-[240px]">
@@ -319,18 +319,18 @@ export default function Home() {
                     : 'opacity-0 translate-y-full'
                 }`}
               >
-                <div className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl card-shadow border border-slate-100">
-                  <div className="flex items-center gap-1 text-amber-400 mb-4">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
+                <div className="bg-white p-7 sm:p-8 rounded-xl sm:rounded-2xl card-shadow border border-slate-200">
+                  <div className="flex items-center gap-1 text-amber-400 mb-5">
+                    <i className="fas fa-star text-lg sm:text-xl"></i>
+                    <i className="fas fa-star text-lg sm:text-xl"></i>
+                    <i className="fas fa-star text-lg sm:text-xl"></i>
+                    <i className="fas fa-star text-lg sm:text-xl"></i>
+                    <i className="fas fa-star text-lg sm:text-xl"></i>
                   </div>
-                  <p className="text-slate-700 leading-relaxed mb-4 font-medium italic text-sm sm:text-base">
+                  <p className="text-slate-800 leading-relaxed mb-5 font-semibold italic text-base sm:text-lg">
                     &ldquo;{review.text}&rdquo;
                   </p>
-                  <p className="text-xs sm:text-sm text-slate-400">— {review.author}</p>
+                  <p className="text-sm sm:text-base text-slate-600 font-medium">— {review.author}</p>
                 </div>
               </div>
             ))}
@@ -366,10 +366,10 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="serif text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 text-slate-900 px-4">
+            <h2 className="serif text-3xl sm:text-4xl lg:text-5xl mb-5 sm:mb-6 text-slate-900 px-4 font-bold">
               실제 분석서는<br /> 이렇게 제공됩니다
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base px-4">
+            <p className="text-slate-700 text-base sm:text-lg px-4 font-medium">
               100페이지에 달하는 정밀한 분석 내용을 미리 확인해보세요
             </p>
           </div>
