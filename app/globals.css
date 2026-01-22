@@ -22,7 +22,13 @@ body {
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #1a1c2c 0%, #4a192c 100%);
+  background: linear-gradient(135deg, #2d3142 0%, #4a5568 50%, #4a192c 100%);
+}
+
+@media (max-width: 640px) {
+  .gradient-bg {
+    background: linear-gradient(135deg, #3d4258 0%, #5a6c7d 50%, #6b4a5c 100%);
+  }
 }
 
 .gold-text {

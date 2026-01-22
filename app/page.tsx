@@ -142,7 +142,7 @@ export default function Home() {
           <p className="text-accent font-semibold tracking-widest mb-6 text-sm sm:text-base">FATE THERAPY</p>
           <h1 className="serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.3] mb-8 sm:mb-10 px-2 font-bold">
             결정을 내려야 하는데<br />
-            <span className="gold-text">확신이 서지 않을 때가 있습니다</span>
+            <span className="text-accent sm:gold-text">확신이 서지 않을 때가 있습니다</span>
           </h1>
           <div className="space-y-4 sm:space-y-5 text-white text-lg sm:text-xl md:text-2xl font-medium px-2">
             <p>이직? 결혼? 투자?</p>
