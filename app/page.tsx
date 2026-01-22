@@ -131,7 +131,7 @@ export default function Home() {
       {/* Hero Section (공감) */}
       <section className="gradient-bg min-h-[100vh] sm:min-h-[90vh] lg:min-h-[80vh] flex items-center justify-center text-center px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
         {/* 마스코트 - Hero 섹션 */}
-        <div className="absolute bottom-0 right-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 opacity-10 sm:opacity-15 pointer-events-none">
+        <div className="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 opacity-15 sm:opacity-20 pointer-events-none">
           <img
             src="/images/hero/promo (1).png"
             alt="마스코트"
@@ -141,8 +141,8 @@ export default function Home() {
         <div className="max-w-3xl w-full animate-fade-in relative z-10">
           <p className="text-accent font-medium tracking-widest mb-4 text-xs sm:text-sm">FATE THERAPY</p>
           <h1 className="serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-6 sm:mb-8 px-2">
-            결정을 내려야 하는데<br />
-            <span className="gold-text">확신이 서지 않을 때가 있습니다</span>
+            결정을 내려야 하는데<br className="sm:hidden" />
+            <span className="gold-text block sm:inline">확신이 서지 않을 때가 있습니다</span>
           </h1>
           <div className="space-y-3 sm:space-y-4 text-slate-300 text-base sm:text-lg md:text-xl font-light px-2">
             <p>이직? 결혼? 투자?</p>
@@ -185,8 +185,8 @@ export default function Home() {
             <div className="mt-8 md:mt-0">
               <p className="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4">전문가 인증</p>
               <h2 className="serif text-2xl sm:text-3xl mb-4 sm:mb-6 text-center md:text-left text-slate-900 leading-tight">
-                3,000명의 인생 전환점을<br className="hidden sm:block" />
-                <span className="text-accent">함께 해온 데이터의 힘</span>
+                3,000명의 인생 전환점을<br className="sm:hidden" />
+                <span className="text-accent block sm:inline">함께 해온 데이터의 힘</span>
               </h2>
               <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8 text-base sm:text-lg">
                 단순한 길흉화복을 점치는 것이 아닙니다. 명리심리상담사 1급 전문가가 당신의 타고난 기질과 다가올 운의 흐름을 과학적으로 분석하여 최적의 선택 시기를 제안합니다.
@@ -213,7 +213,7 @@ export default function Home() {
       {/* Value Section (구체적 가치) */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
         {/* 마스코트 - Value 섹션 */}
-        <div className="absolute top-0 left-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 opacity-8 sm:opacity-12 pointer-events-none hidden sm:block">
+        <div className="absolute top-0 left-0 w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 opacity-12 sm:opacity-15 pointer-events-none">
           <img
             src="/images/hero/promo (2).png"
             alt="마스코트"
@@ -221,7 +221,7 @@ export default function Home() {
           />
         </div>
         <div className="max-w-5xl mx-auto text-center mb-10 sm:mb-16 relative z-10">
-          <h2 className="serif text-2xl sm:text-3xl mb-3 sm:mb-4 text-slate-900 px-4">운명테라피가 드리는<br />100페이지 인생 지도</h2>
+          <h2 className="serif text-2xl sm:text-3xl mb-3 sm:mb-4 text-slate-900 px-4">운명테라피가 드리는<br className="sm:hidden" />100페이지 인생 지도</h2>
           <p className="text-slate-500 text-sm sm:text-base px-4">이 분석서를 읽는 것만으로도 당신의 앞날이 선명해집니다.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
@@ -252,7 +252,7 @@ export default function Home() {
       {/* Differentiation (차별화) */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-slate-900 text-white relative overflow-hidden">
         {/* 마스코트 - Differentiation 섹션 */}
-        <div className="absolute bottom-0 left-0 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 opacity-8 sm:opacity-12 pointer-events-none hidden sm:block">
+        <div className="absolute bottom-0 left-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 opacity-12 sm:opacity-15 pointer-events-none">
           <img
             src="/images/hero/promo (3).png"
             alt="마스코트"
@@ -304,7 +304,7 @@ export default function Home() {
       {/* Proof (신뢰 구축) */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-slate-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="serif text-2xl sm:text-3xl text-center mb-10 sm:mb-16 text-slate-900 px-4">먼저 인생 지도를 받으신 분들의 기록</h2>
+          <h2 className="serif text-2xl sm:text-3xl text-center mb-10 sm:mb-16 text-slate-900 px-4">먼저 인생 지도를<br className="sm:hidden" /> 받으신 분들의 기록</h2>
 
           {/* 후기 슬라이더 */}
           <div className="relative min-h-[280px] sm:min-h-[240px]">
@@ -357,7 +357,7 @@ export default function Home() {
       {/* Sample (투명성) */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
         {/* 마스코트 - Sample 섹션 */}
-        <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 opacity-8 sm:opacity-12 pointer-events-none hidden md:block">
+        <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 opacity-12 sm:opacity-15 pointer-events-none">
           <img
             src="/images/hero/promo (4).png"
             alt="마스코트"
@@ -367,7 +367,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="serif text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 text-slate-900 px-4">
-              실제 분석서는 이렇게 제공됩니다
+              실제 분석서는<br className="sm:hidden" /> 이렇게 제공됩니다
             </h2>
             <p className="text-slate-600 text-sm sm:text-base px-4">
               100페이지에 달하는 정밀한 분석 내용을 미리 확인해보세요
