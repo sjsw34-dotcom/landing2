@@ -15,6 +15,9 @@
 body {
   font-family: 'Pretendard', sans-serif;
   overflow-x: hidden;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .serif {
@@ -47,10 +50,16 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.9);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-top: 1px solid #eee;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-inset-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
 }
 
 @keyframes fadeInUp {
