@@ -393,24 +393,24 @@ export default function Home() {
         </div>
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 md:gap-10 relative z-10">
           <div className="p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 bg-white">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4 sm:mb-6 md:mb-7 text-xl sm:text-2xl md:text-3xl">
-              <i className="fas fa-star"></i>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 md:mb-7 overflow-hidden bg-amber-50">
+              <img src="/images/hero/luck%20of%20fortune.jpg" alt="" className="w-full h-full object-contain" />
             </div>
-            <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">⭐ 인생 황금기 포착</h3>
+            <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">인생 황금기 포착</h3>
             <p className="text-slate-800 leading-relaxed text-sm sm:text-lg md:text-xl font-medium">언제 도전해야 성과가 극대화되는지, 언제 인내하며 씨앗을 뿌려야 하는지 명확히 짚어드립니다.</p>
           </div>
           <div className="p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 bg-white">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4 sm:mb-6 md:mb-7 text-xl sm:text-2xl md:text-3xl">
-              <i className="fas fa-coins"></i>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 md:mb-7 overflow-hidden bg-blue-50">
+              <img src="/images/hero/golden%20age.jpg" alt="" className="w-full h-full object-contain" />
             </div>
-            <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">💰 재물운의 흐름</h3>
+            <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">재물운의 흐름</h3>
             <p className="text-slate-800 leading-relaxed text-sm sm:text-lg md:text-xl font-medium">당신의 그릇에 맞는 재산 증식 방법과 주의해야 할 투자 손실 시기를 상세히 분석합니다.</p>
           </div>
           <div className="p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 sm:col-span-2 lg:col-span-1 bg-white">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 mb-4 sm:mb-6 md:mb-7 text-xl sm:text-2xl md:text-3xl">
-              <i className="fas fa-heart"></i>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 md:mb-7 overflow-hidden bg-rose-50">
+              <img src="/images/hero/heart.jpg" alt="" className="w-full h-full object-contain" />
             </div>
-            <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">❤️ 인연과 관계</h3>
+            <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">인연과 관계</h3>
             <p className="text-slate-800 leading-relaxed text-sm sm:text-lg md:text-xl font-medium">당신을 돕는 귀인과 조심해야 할 악연, 그리고 건강한 관계 유지를 위한 맞춤 조언을 담았습니다.</p>
           </div>
         </div>

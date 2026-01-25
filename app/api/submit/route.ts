@@ -4,8 +4,9 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
     
-    // 구글 시트 웹 앱 URL 가져오기 (환경 변수에서)
-    const webAppUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL;
+    // 구글 시트 웹 앱 URL 가져오기 (환경 변수에서, 없으면 기본값 사용)
+    const webAppUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL || 
+      'https://script.google.com/macros/s/AKfycbz8-v1YCs-ZqtRp64lYBNaHYNlJ9X7vonUfFhMM0cB0p_ftxp3Ei5K5nKDlgbSW5kCYsw/exec';
     
     if (!webAppUrl) {
       return NextResponse.json(
@@ -61,8 +62,13 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     console.error('Submit error:', error);
+    const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류';
     return NextResponse.json(
-      { success: false, message: '서버 오류가 발생했습니다.' },
+      { 
+        success: false, 
+        message: `서버 오류가 발생했습니다: ${errorMessage}`,
+        error: errorMessage
+      },
       { status: 500 }
     );
   }
