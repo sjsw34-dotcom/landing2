@@ -447,7 +447,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="p-6 sm:p-8 md:p-10 lg:p-12 bg-slate-800 relative">
-              <div className="absolute top-0 right-0 p-2 sm:p-4 md:p-5 bg-accent text-slate-900 text-[10px] sm:text-sm md:text-base font-bold uppercase tracking-tighter">RECOMMENDED</div>
+              <div className="absolute top-0 right-0 p-2 sm:p-4 md:p-5 bg-accent text-slate-900 text-[10px] sm:text-sm md:text-base font-bold tracking-tight">⭐ 추천</div>
               <p className="text-accent font-bold mb-5 sm:mb-7 md:mb-9 uppercase tracking-widest text-xs sm:text-base md:text-lg mt-8 sm:mt-0">✅ 운명테라피 (PDF)</p>
               <ul className="space-y-4 sm:space-y-6 md:space-y-7">
                 <li className="flex items-start gap-3 md:gap-5">
