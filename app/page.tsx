@@ -236,7 +236,7 @@ export default function Home() {
           `✅ 주문이 완료되었습니다!\n\n` +
           `주문번호: ${result.orderNumber}\n` +
           `제출일시: ${result.timestamp}\n\n` +
-          `분석서는 24시간간 이내에 이메일로 발송됩니다.\n` +
+          `분석서는 24시간 이내에 이메일로 발송됩니다.\n` +
           `구글 시트에 주문 정보가 저장되었습니다.`
         );
         
@@ -661,7 +661,7 @@ export default function Home() {
               </li>
               <li className="flex items-center gap-3 sm:gap-4">
                 <i className="fas fa-check text-green-500 text-base sm:text-xl md:text-2xl flex-shrink-0"></i>
-                <span className="text-sm sm:text-lg md:text-xl font-semibold">✅ 불만족 시 100% 환불 (7일 이내)</span>
+                <span className="text-sm sm:text-lg md:text-xl font-semibold">✅ 불만족 시 100% 환불 (3일 이내)</span>
               </li>
             </ul>
             <button
@@ -686,7 +686,7 @@ export default function Home() {
                 <i className="fas fa-shield-check text-green-600 text-xl sm:text-3xl md:text-4xl"></i>
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">✅ 100% 환불 보장</h3>
-              <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">7일 이내 무조건 환불</p>
+              <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">3일 이내 무조건 환불</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6">
@@ -726,7 +726,7 @@ export default function Home() {
                 <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0 text-lg sm:text-xl"></i>
               </summary>
               <p className="mt-5 sm:mt-6 text-slate-800 leading-relaxed text-base sm:text-lg md:text-xl font-medium">
-                결제 후 영업일 기준 3~5일 이내에 입력하신 이메일로 PDF 파일이 발송됩니다.<br />
+                결제 후 24시간 이내에 입력하신 이메일로 PDF 파일이 발송됩니다.<br />
                 명절이나 주말의 경우 소요 시간이 다소 길어질 수 있습니다.
               </p>
             </details>
@@ -737,7 +737,7 @@ export default function Home() {
                 <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0 text-lg sm:text-xl"></i>
               </summary>
               <p className="mt-5 sm:mt-6 text-slate-800 leading-relaxed text-base sm:text-lg md:text-xl font-medium">
-                분석서를 받으신 후 7일 이내 불만족 시 100% 환불해드립니다.<br />
+                분석서를 받으신 후 3일 이내 불만족 시 100% 환불해드립니다.<br />
                 단, 환불 사유를 간단히 작성해 주시면 서비스 개선에 참고하겠습니다.
               </p>
             </details>
