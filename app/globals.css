@@ -15,10 +15,25 @@
 body {
   font-family: 'Pretendard', sans-serif;
   overflow-x: hidden;
-  word-break: break-word;
+  word-break: keep-all;
+  word-wrap: break-word;
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+}
+
+/* 한글 최적화: 단어 단위로 줄바꿈 */
+p, span, div {
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+/* 모바일에서 더 자연스러운 줄바꿈 */
+@media (max-width: 640px) {
+  body {
+    line-height: 1.8;
+  }
 }
 
 .serif {
@@ -116,6 +131,34 @@ body {
   }
 }
 
+/* 터치 영역 최소 크기 보장 (44x44px) */
+button,
+a[role="button"],
+summary {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* 반응형 폰트 크기 조정 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* 태블릿 최적화 */
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+  }
+}
+
 /* 스크롤 스무딩 */
 html {
   scroll-behavior: smooth;
@@ -125,6 +168,36 @@ html {
 @supports (-webkit-touch-callout: none) {
   .min-h-\[100vh\] {
     min-height: -webkit-fill-available;
+  }
+}
+
+/* 모바일 가독성 향상 */
+@media (max-width: 640px) {
+  /* 텍스트 최소 크기 보장 */
+  p, li, span, div {
+    font-size: max(14px, 1rem);
+  }
+
+  /* 버튼 및 링크 터치 영역 확대 */
+  button, a {
+    padding: max(12px, 0.75rem);
+  }
+
+  /* 입력 필드 최소 높이 */
+  input, select, textarea {
+    min-height: 48px;
+    font-size: 16px; /* iOS 줌 방지 */
+  }
+}
+
+/* 태블릿 가독성 향상 */
+@media (min-width: 641px) and (max-width: 1024px) {
+  p, li, span {
+    font-size: max(16px, 1.125rem);
+  }
+
+  input, select, textarea {
+    min-height: 52px;
   }
 }
 
