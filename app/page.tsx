@@ -306,7 +306,7 @@ export default function Home() {
           />
         </div>
         <div className="max-w-4xl w-full animate-fade-in relative z-10">
-          <p className="text-accent font-semibold tracking-widest mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm md:text-base">FATE THERAPY</p>
+          <p className="text-accent font-semibold tracking-widest mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm md:text-base">UNMYUNG THERAPY</p>
           <h1 className="serif text-[1.75rem] leading-tight sm:text-4xl md:text-5xl lg:text-6xl text-white sm:leading-[1.4] mb-6 sm:mb-10 md:mb-12 px-2 font-bold">
             결정을 내려야 하는데<br />
             <span className="text-accent drop-shadow-lg sm:gold-text">확신이 서지 않을 때가 있습니다</span>
@@ -802,7 +802,7 @@ export default function Home() {
             <button onClick={() => setShowPrivacyPolicy(true)} className="hover:text-white transition-colors cursor-pointer min-h-[44px] flex items-center">🔒 개인정보처리방침</button>
             <button onClick={() => setShowModal(true)} className="hover:text-white transition-colors cursor-pointer min-h-[44px] flex items-center">💰 환불규정</button>
           </div>
-          <p className="text-[9px] sm:text-xs md:text-sm opacity-30">© 2026 FATE THERAPY. ALL RIGHTS RESERVED.</p>
+          <p className="text-[9px] sm:text-xs md:text-sm opacity-30">© 2026 UNMYUNG THERAPY. ALL RIGHTS RESERVED.</p>
         </div>
       </footer>
 
