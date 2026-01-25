@@ -173,16 +173,6 @@ html {
 
 /* 모바일 가독성 향상 */
 @media (max-width: 640px) {
-  /* 텍스트 최소 크기 보장 */
-  p, li, span, div {
-    font-size: max(14px, 1rem);
-  }
-
-  /* 버튼 및 링크 터치 영역 확대 */
-  button, a {
-    padding: max(12px, 0.75rem);
-  }
-
   /* 입력 필드 최소 높이 */
   input, select, textarea {
     min-height: 48px;
