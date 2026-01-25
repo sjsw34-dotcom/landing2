@@ -394,21 +394,21 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 md:gap-10 relative z-10">
           <div className="p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 bg-white">
             <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 md:mb-7 overflow-hidden bg-amber-50">
-              <img src="/images/hero/luck%20of%20fortune.jpg" alt="" className="w-full h-full object-contain" />
+              <img src="/images/hero/luck%20of%20fortune.png" alt="" className="w-full h-full object-contain" />
             </div>
             <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">인생 황금기 포착</h3>
             <p className="text-slate-800 leading-relaxed text-sm sm:text-lg md:text-xl font-medium">언제 도전해야 성과가 극대화되는지, 언제 인내하며 씨앗을 뿌려야 하는지 명확히 짚어드립니다.</p>
           </div>
           <div className="p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 bg-white">
             <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 md:mb-7 overflow-hidden bg-blue-50">
-              <img src="/images/hero/golden%20age.jpg" alt="" className="w-full h-full object-contain" />
+              <img src="/images/hero/golden%20age.png" alt="" className="w-full h-full object-contain" />
             </div>
             <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">재물운의 흐름</h3>
             <p className="text-slate-800 leading-relaxed text-sm sm:text-lg md:text-xl font-medium">당신의 그릇에 맞는 재산 증식 방법과 주의해야 할 투자 손실 시기를 상세히 분석합니다.</p>
           </div>
           <div className="p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl border border-slate-200 card-shadow hover:translate-y-[-5px] transition-transform active:scale-95 sm:col-span-2 lg:col-span-1 bg-white">
             <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 md:mb-7 overflow-hidden bg-rose-50">
-              <img src="/images/hero/heart.jpg" alt="" className="w-full h-full object-contain" />
+              <img src="/images/hero/heart.png" alt="" className="w-full h-full object-contain" />
             </div>
             <h3 className="font-bold text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-5 md:mb-6 text-slate-900">인연과 관계</h3>
             <p className="text-slate-800 leading-relaxed text-sm sm:text-lg md:text-xl font-medium">당신을 돕는 귀인과 조심해야 할 악연, 그리고 건강한 관계 유지를 위한 맞춤 조언을 담았습니다.</p>
@@ -683,28 +683,28 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 md:gap-10 text-center">
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-green-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
-                <img src="/images/hero/Refund.jpg" alt="" className="w-full h-full object-contain" />
+                <img src="/images/hero/Refund.png" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">100% 환불 보장</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">3일 이내 무조건 환불</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
-                <img src="/images/hero/Security.jpg" alt="" className="w-full h-full object-contain" />
+                <img src="/images/hero/Security.png" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">보안 결제</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">SSL 암호화 보호</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-purple-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
-                <img src="/images/hero/Personal%20information.jpg" alt="" className="w-full h-full object-contain" />
+                <img src="/images/hero/Personal%20information.png" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">개인정보 보호</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">철저한 비밀 보장</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-amber-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
-                <img src="/images/hero/Expert.jpg" alt="" className="w-full h-full object-contain" />
+                <img src="/images/hero/Expert.png" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">전문가 인증</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">국가 자격증 보유</p>
