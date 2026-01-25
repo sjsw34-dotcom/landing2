@@ -682,29 +682,29 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 md:gap-10 text-center">
             <div className="flex flex-col items-center">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-green-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6">
-                <i className="fas fa-shield-check text-green-600 text-xl sm:text-3xl md:text-4xl"></i>
+              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-green-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
+                <img src="/images/hero/Refund.jpg" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">100% 환불 보장</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">3일 이내 무조건 환불</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6">
-                <i className="fas fa-lock text-blue-600 text-xl sm:text-3xl md:text-4xl"></i>
+              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
+                <img src="/images/hero/Security.jpg" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">보안 결제</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">SSL 암호화 보호</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-purple-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6">
-                <i className="fas fa-user-shield text-purple-600 text-xl sm:text-3xl md:text-4xl"></i>
+              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-purple-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
+                <img src="/images/hero/Personal%20information.jpg" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">개인정보 보호</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">철저한 비밀 보장</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-amber-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6">
-                <i className="fas fa-certificate text-amber-600 text-xl sm:text-3xl md:text-4xl"></i>
+              <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-amber-50 rounded-full flex items-center justify-center mb-3 sm:mb-5 md:mb-6 overflow-hidden p-2">
+                <img src="/images/hero/Expert.jpg" alt="" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-slate-900 mb-1 sm:mb-3 text-sm sm:text-lg md:text-xl">전문가 인증</h3>
               <p className="text-xs sm:text-base md:text-lg text-slate-700 font-medium">국가 자격증 보유</p>
