@@ -20,6 +20,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<{
     email: string;
+    phone: string;
     question: string;
     people: Array<{
       name: string;
@@ -30,6 +31,7 @@ export default function Home() {
     }>;
   }>({
     email: '',
+    phone: '',
     question: '',
     people: Array(4).fill(null).map(() => ({
       name: '',
@@ -174,9 +176,9 @@ export default function Home() {
     try {
       // 폼 유효성 검사
       const peopleData = formData.people.slice(0, numberOfPeople);
-      const hasEmptyFields = peopleData.some(person => 
+      const hasEmptyFields = peopleData.some(person =>
         !person.name || !person.birthDate || !person.birthTime || !person.calendarType || !person.gender
-      ) || !formData.email;
+      ) || !formData.email || !formData.phone;
 
       if (hasEmptyFields) {
         alert('모든 필수 항목을 입력해주세요.');
@@ -204,6 +206,7 @@ export default function Home() {
 
       const submitData = {
         email: formData.email,
+        phone: formData.phone,
         question: formData.question || '',
         productName: selectedProduct.name,
         numberOfPeople: numberOfPeople,
@@ -248,6 +251,7 @@ export default function Home() {
         // 폼 초기화
         setFormData({
           email: '',
+          phone: '',
           question: '',
           people: Array(4).fill(null).map(() => ({
             name: '',
@@ -1322,6 +1326,21 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+
+                {/* 연락처 (전화번호) */}
+                <div className="text-left">
+                  <label className="block text-sm font-medium text-slate-700 mb-2">연락처 *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="010-0000-0000"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent text-base"
+                    required
+                  />
+                  <p className="text-xs text-slate-400 mt-1">주문 확인 카카오톡 메시지 발송에 사용됩니다.</p>
+                </div>
 
                 {/* 이메일 주소 */}
                 <div className="text-left">

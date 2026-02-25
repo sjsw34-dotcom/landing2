@@ -1,20 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { sendKakaoMessage } from '@/app/lib/solapi';
 
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    
-    // 구글 시트 웹 앱 URL 가져오기 (환경 변수에서, 없으면 기본값 사용)
-    const webAppUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL || 
+
+    const webAppUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL ||
       'https://script.google.com/macros/s/AKfycbz8-v1YCs-ZqtRp64lYBNaHYNlJ9X7vonUfFhMM0cB0p_ftxp3Ei5K5nKDlgbSW5kCYsw/exec';
-    
+
     if (!webAppUrl) {
       return NextResponse.json(
         { success: false, message: '구글 시트 웹 앱 URL이 설정되지 않았습니다.' },
         { status: 500 }
       );
     }
-    
+
     // 구글 시트로 데이터 전송
     const response = await fetch(webAppUrl, {
       method: 'POST',
@@ -23,35 +23,52 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify(data),
     });
-    
-    // 응답 텍스트로 먼저 받기 (JSON이 아닐 수 있음)
+
     const responseText = await response.text();
     let result;
-    
+
     try {
       result = JSON.parse(responseText);
-    } catch (parseError) {
-      // JSON 파싱 실패 시 (구글 시트 웹 앱이 HTML을 반환한 경우)
-      console.error('Response parse error:', parseError);
-      console.error('Response text:', responseText);
-      // 응답이 성공적으로 받아졌다면 (상태 코드 200) 성공으로 간주
+    } catch {
       if (response.ok) {
+        const orderNumber = `ORD-${Date.now()}`;
+        // 카카오 메시지 발송 (비동기, 실패해도 주문은 성공 처리)
+        if (data.phone) {
+          sendKakaoMessage({
+            to: data.phone,
+            customerName: data.people?.[0]?.name ?? '고객',
+            productName: data.productName,
+            orderNumber,
+            price: data.totalPrice,
+          }).catch((err) => console.error('[Kakao] 발송 오류:', err));
+        }
         return NextResponse.json({
           success: true,
           message: '주문이 성공적으로 접수되었습니다.',
-          orderNumber: `ORD-${Date.now()}`,
+          orderNumber,
           timestamp: new Date().toISOString()
         });
       } else {
         throw new Error('구글 시트 응답 파싱 실패');
       }
     }
-    
+
     if (result.success) {
+      const orderNumber = result.orderNumber;
+      // 카카오 메시지 발송 (비동기, 실패해도 주문은 성공 처리)
+      if (data.phone) {
+        sendKakaoMessage({
+          to: data.phone,
+          customerName: data.people?.[0]?.name ?? '고객',
+          productName: data.productName,
+          orderNumber,
+          price: data.totalPrice,
+        }).catch((err) => console.error('[Kakao] 발송 오류:', err));
+      }
       return NextResponse.json({
         success: true,
         message: '주문이 성공적으로 접수되었습니다.',
-        orderNumber: result.orderNumber,
+        orderNumber,
         timestamp: result.timestamp
       });
     } else {
@@ -64,8 +81,8 @@ export async function POST(request: NextRequest) {
     console.error('Submit error:', error);
     const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류';
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         message: `서버 오류가 발생했습니다: ${errorMessage}`,
         error: errorMessage
       },
