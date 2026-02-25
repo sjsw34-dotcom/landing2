@@ -15,7 +15,7 @@ export default function Home() {
   const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
-  const [numberOfPeople, setNumberOfPeople] = useState(1);
+  const [selectedProductIdx, setSelectedProductIdx] = useState(1);
   const [currentReview, setCurrentReview] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<{
@@ -63,14 +63,15 @@ export default function Home() {
     }
   ];
 
-  const priceTable = [
-    { people: 1, price: 39000, originalPrice: 99000, discount: 60 },
-    { people: 2, price: 70000, originalPrice: 198000, discount: 65 },
-    { people: 3, price: 100000, originalPrice: 297000, discount: 66 },
-    { people: 4, price: 125000, originalPrice: 396000, discount: 68 },
+  const products = [
+    { id: 'basic', name: '기본사주', people: 1, price: 9900, originalPrice: 29000, badge: null as string | null, description: '핵심 사주 기본 분석' },
+    { id: 'single', name: '1인 종합사주', people: 1, price: 29800, originalPrice: 59000, badge: '추천' as string | null, description: '1인 심층 종합 분석' },
+    { id: 'couple', name: '2인 종합사주', people: 2, price: 55000, originalPrice: 99000, badge: null as string | null, description: '커플 · 부부 · 가족' },
   ];
 
-  const currentPricing = priceTable[numberOfPeople - 1];
+  const selectedProduct = products[selectedProductIdx];
+  const numberOfPeople = selectedProduct.people;
+  const currentPricing = selectedProduct;
 
   // 현재 월의 마지막 날 계산
   const getEndOfMonth = () => {
@@ -187,8 +188,8 @@ export default function Home() {
       // 결제 완료 메시지 표시
       const confirmPayment = confirm(
         `결제를 진행하시겠습니까?\n\n` +
-        `인원수: ${numberOfPeople}명\n` +
-        `결제금액: ₩${currentPricing.price.toLocaleString()}\n\n` +
+        `상품: ${selectedProduct.name}\n` +
+        `결제금액: ₩${selectedProduct.price.toLocaleString()}\n\n` +
         `[가상 결제 모드]\n` +
         `실제 결제는 진행되지 않으며, 테스트를 위해 가상으로 결제 완료 처리됩니다.`
       );
@@ -204,8 +205,9 @@ export default function Home() {
       const submitData = {
         email: formData.email,
         question: formData.question || '',
+        productName: selectedProduct.name,
         numberOfPeople: numberOfPeople,
-        totalPrice: currentPricing.price,
+        totalPrice: selectedProduct.price,
         people: peopleData.map(person => ({
           name: person.name,
           birthDate: person.birthDate,
@@ -255,7 +257,7 @@ export default function Home() {
             gender: ''
           }))
         });
-        setNumberOfPeople(1);
+        setSelectedProductIdx(1);
       } else {
         alert(`주문 처리 중 오류가 발생했습니다.\n\n오류 메시지: ${result.message || '알 수 없는 오류'}\n\n다시 시도해주세요.`);
       }
@@ -271,12 +273,13 @@ export default function Home() {
     }
   };
 
-  // 인원 수 변경 시 폼 데이터 유지 (추가 인원만 초기화)
+  // 상품 변경 시 폼 데이터 유지 (추가 인원만 초기화)
   useEffect(() => {
+    const peopleCount = products[selectedProductIdx].people;
     setFormData(prev => ({
       ...prev,
-      people: Array(4).fill(null).map((_, idx) => 
-        idx < numberOfPeople ? (prev.people[idx] || {
+      people: Array(4).fill(null).map((_, idx) =>
+        idx < peopleCount ? (prev.people[idx] || {
           name: '',
           birthDate: '',
           birthTime: '',
@@ -291,7 +294,8 @@ export default function Home() {
         }
       )
     }));
-  }, [numberOfPeople]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProductIdx]);
 
   return (
     <div className="bg-white text-slate-800">
@@ -599,80 +603,130 @@ export default function Home() {
       </section>
 
       {/* Pricing (정당한 대가) */}
-      <section id="pricing" className="py-12 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 bg-slate-50 flex justify-center">
-        <div className="max-w-2xl w-full bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
-          <div className="bg-slate-900 p-6 sm:p-10 md:p-12 lg:p-14 text-center text-white">
-            <p className="text-accent uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-xs sm:text-base md:text-lg mb-3 sm:mb-5">⏰ LIMITED OFFER</p>
-            <h2 className="serif text-xl sm:text-3xl md:text-4xl mb-3 sm:mb-5 leading-[1.4]">🎯 운명테라피 인생 지도</h2>
-            <p className="text-slate-200 text-sm sm:text-lg md:text-xl mb-5 sm:mb-8 font-medium">15년 전문성을 담은 100페이지 분석서</p>
+      <section id="pricing" className="py-12 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 bg-slate-50">
+        <div className="max-w-5xl mx-auto">
+          {/* 섹션 헤더 */}
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <p className="text-accent uppercase tracking-[0.15em] font-bold text-xs sm:text-sm mb-2 sm:mb-3">⏰ LIMITED OFFER</p>
+            <h2 className="serif text-2xl sm:text-4xl md:text-5xl mb-3 sm:mb-5 text-slate-900 font-bold leading-[1.4]">🎯 운명테라피 인생 지도</h2>
+            <p className="text-slate-600 text-sm sm:text-lg md:text-xl font-medium">원하는 상품을 선택하고, 나만의 사주 분석서를 받아보세요</p>
 
             {/* 카운트다운 타이머 */}
-            <div className="bg-slate-800/50 rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-7 border border-accent/20">
-              <p className="text-accent text-xs sm:text-base md:text-lg font-bold mb-2 sm:mb-4">⏱️ 특별 할인 마감까지</p>
-              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-                <div className="bg-slate-900/80 rounded-lg md:rounded-xl p-2 sm:p-4">
-                  <div className="text-xl sm:text-3xl md:text-4xl font-bold text-accent">{timeLeft.days}</div>
-                  <div className="text-[10px] sm:text-sm md:text-base text-slate-400 mt-0.5 sm:mt-2">일</div>
+            <div className="mt-5 sm:mt-8 bg-slate-900 rounded-xl md:rounded-2xl p-4 sm:p-5 border border-accent/30 max-w-lg mx-auto">
+              <p className="text-accent text-xs sm:text-sm font-bold mb-2 sm:mb-3">⏱️ {currentMonth}월 특별 할인 마감까지</p>
+              <div className="grid grid-cols-4 gap-2">
+                <div className="bg-slate-800 rounded-lg p-2 sm:p-3">
+                  <div className="text-xl sm:text-3xl font-bold text-accent">{timeLeft.days}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 mt-1">일</div>
                 </div>
-                <div className="bg-slate-900/80 rounded-lg md:rounded-xl p-2 sm:p-4">
-                  <div className="text-xl sm:text-3xl md:text-4xl font-bold text-accent">{timeLeft.hours}</div>
-                  <div className="text-[10px] sm:text-sm md:text-base text-slate-400 mt-0.5 sm:mt-2">시간</div>
+                <div className="bg-slate-800 rounded-lg p-2 sm:p-3">
+                  <div className="text-xl sm:text-3xl font-bold text-accent">{timeLeft.hours}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 mt-1">시간</div>
                 </div>
-                <div className="bg-slate-900/80 rounded-lg md:rounded-xl p-2 sm:p-4">
-                  <div className="text-xl sm:text-3xl md:text-4xl font-bold text-accent">{timeLeft.minutes}</div>
-                  <div className="text-[10px] sm:text-sm md:text-base text-slate-400 mt-0.5 sm:mt-2">분</div>
+                <div className="bg-slate-800 rounded-lg p-2 sm:p-3">
+                  <div className="text-xl sm:text-3xl font-bold text-accent">{timeLeft.minutes}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 mt-1">분</div>
                 </div>
-                <div className="bg-slate-900/80 rounded-lg md:rounded-xl p-2 sm:p-4">
-                  <div className="text-xl sm:text-3xl md:text-4xl font-bold text-accent">{timeLeft.seconds}</div>
-                  <div className="text-[10px] sm:text-sm md:text-base text-slate-400 mt-0.5 sm:mt-2">초</div>
+                <div className="bg-slate-800 rounded-lg p-2 sm:p-3">
+                  <div className="text-xl sm:text-3xl font-bold text-accent">{timeLeft.seconds}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 mt-1">초</div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="p-6 sm:p-10 md:p-12 lg:p-14 text-center">
-            {/* 희소성 강조 */}
-            <div className="bg-amber-50 border border-amber-200 rounded-xl md:rounded-2xl p-3 sm:p-5 mb-5 sm:mb-8">
-              <p className="text-amber-800 font-bold text-xs sm:text-base md:text-lg">
-                <i className="fas fa-fire text-amber-500 mr-1 sm:mr-2"></i>
-                이번 달 잔여 상담 가능 인원: <span className="text-lg sm:text-2xl md:text-3xl">12명</span>
+
+          {/* 3개 상품 카드 */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-12">
+            {products.map((product, idx) => (
+              <div
+                key={product.id}
+                className={`relative rounded-2xl border-2 overflow-hidden transition-all cursor-pointer ${
+                  selectedProductIdx === idx
+                    ? 'border-accent bg-white shadow-2xl scale-[1.02]'
+                    : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
+                }`}
+                onClick={() => setSelectedProductIdx(idx)}
+              >
+                {/* 배지 */}
+                {product.badge && (
+                  <div className="absolute top-0 right-0 bg-accent text-slate-900 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-bl-xl">
+                    ⭐ {product.badge}
+                  </div>
+                )}
+                <div className="p-5 sm:p-6 md:p-7">
+                  {/* 선택 인디케이터 */}
+                  <div className={`w-5 h-5 rounded-full border-2 mb-3 sm:mb-4 flex items-center justify-center transition-all ${
+                    selectedProductIdx === idx ? 'border-accent bg-accent' : 'border-slate-300'
+                  }`}>
+                    {selectedProductIdx === idx && (
+                      <div className="w-2 h-2 rounded-full bg-slate-900"></div>
+                    )}
+                  </div>
+                  <p className="font-bold text-base sm:text-lg md:text-xl text-slate-900 mb-1">{product.name}</p>
+                  <p className="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4">{product.description}</p>
+                  <div className="flex items-end gap-2 flex-wrap">
+                    <span className="text-2xl sm:text-3xl font-bold text-slate-900">₩{product.price.toLocaleString()}</span>
+                    <span className="text-sm sm:text-base text-slate-300 line-through mb-0.5">₩{product.originalPrice.toLocaleString()}</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-accent font-semibold mt-1">
+                    ₩{(product.originalPrice - product.price).toLocaleString()} 절약
+                  </p>
+                </div>
+                {selectedProductIdx === idx && (
+                  <div className="bg-accent/10 border-t border-accent/20 px-5 sm:px-6 py-2.5 sm:py-3">
+                    <p className="text-accent text-xs sm:text-sm font-bold text-center">✓ 선택됨</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* 선택된 상품 상세 + CTA */}
+          <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            {/* 희소성 */}
+            <div className="bg-amber-50 border-b border-amber-100 px-6 py-3 sm:py-4 text-center">
+              <p className="text-amber-800 font-bold text-xs sm:text-sm md:text-base">
+                <i className="fas fa-fire text-amber-500 mr-1"></i>
+                이번 달 잔여 상담 가능 인원: <span className="text-base sm:text-xl font-extrabold">12명</span>
               </p>
             </div>
 
-            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-5 mb-5 sm:mb-8 md:mb-10">
-              <span className="text-slate-300 line-through text-base sm:text-2xl md:text-3xl">₩99,000</span>
-              <span className="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 italic">₩39,000</span>
-            </div>
-            <p className="text-sm sm:text-lg md:text-xl text-slate-700 mb-6 sm:mb-10 font-medium">
-              1인 기준 · 추가 인원 시 더 큰 할인! 🎉
-            </p>
+            <div className="p-6 sm:p-8 md:p-10 text-center">
+              <p className="text-slate-500 text-sm sm:text-base mb-2">선택 상품: <strong className="text-slate-800">{selectedProduct.name}</strong></p>
+              <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
+                <span className="text-slate-300 line-through text-base sm:text-xl">₩{selectedProduct.originalPrice.toLocaleString()}</span>
+                <span className="text-4xl sm:text-5xl font-bold text-slate-900">₩{selectedProduct.price.toLocaleString()}</span>
+              </div>
 
-            <ul className="text-left space-y-3 sm:space-y-5 mb-8 sm:mb-12 text-slate-800 max-w-lg mx-auto">
-              <li className="flex items-center gap-3 sm:gap-4">
-                <i className="fas fa-check text-green-500 text-base sm:text-xl md:text-2xl flex-shrink-0"></i>
-                <span className="text-sm sm:text-lg md:text-xl font-semibold">📄 100페이지 심층 PDF 분석서</span>
-              </li>
-              <li className="flex items-center gap-3 sm:gap-4">
-                <i className="fas fa-check text-green-500 text-base sm:text-xl md:text-2xl flex-shrink-0"></i>
-                <span className="text-sm sm:text-lg md:text-xl font-semibold">🎯 11가지 핵심 영역 완전 분석</span>
-              </li>
-              <li className="flex items-center gap-3 sm:gap-4">
-                <i className="fas fa-check text-green-500 text-base sm:text-xl md:text-2xl flex-shrink-0"></i>
-                <span className="text-sm sm:text-lg md:text-xl font-semibold">♾️ 평생 소장 및 무제한 열람</span>
-              </li>
-              <li className="flex items-center gap-3 sm:gap-4">
-                <i className="fas fa-check text-green-500 text-base sm:text-xl md:text-2xl flex-shrink-0"></i>
-                <span className="text-sm sm:text-lg md:text-xl font-semibold">✅ 불만족 시 100% 환불 (3일 이내)</span>
-              </li>
-            </ul>
-            <button
-              onClick={() => setShowPrivacyNotice(true)}
-              className="w-full bg-slate-900 text-white py-4 sm:py-6 md:py-7 rounded-2xl text-base sm:text-xl md:text-2xl font-bold hover:bg-slate-800 active:scale-98 transition-all shadow-lg"
-            >
-              🚀 내 인생 지도 확인하기
-            </button>
-            <p className="mt-6 sm:mt-8 text-sm sm:text-base md:text-lg text-slate-500 italic font-medium">
-              ⚠️ {currentMonth}월 {lastDayOfMonth}일 이후 정상가 99,000원으로 환원됩니다.
-            </p>
+              <ul className="text-left space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-slate-800 max-w-md mx-auto">
+                <li className="flex items-center gap-2 sm:gap-3">
+                  <i className="fas fa-check text-green-500 text-sm sm:text-lg flex-shrink-0"></i>
+                  <span className="text-sm sm:text-base font-semibold">📄 100페이지 심층 PDF 분석서</span>
+                </li>
+                <li className="flex items-center gap-2 sm:gap-3">
+                  <i className="fas fa-check text-green-500 text-sm sm:text-lg flex-shrink-0"></i>
+                  <span className="text-sm sm:text-base font-semibold">🎯 11가지 핵심 영역 완전 분석</span>
+                </li>
+                <li className="flex items-center gap-2 sm:gap-3">
+                  <i className="fas fa-check text-green-500 text-sm sm:text-lg flex-shrink-0"></i>
+                  <span className="text-sm sm:text-base font-semibold">♾️ 평생 소장 및 무제한 열람</span>
+                </li>
+                <li className="flex items-center gap-2 sm:gap-3">
+                  <i className="fas fa-check text-green-500 text-sm sm:text-lg flex-shrink-0"></i>
+                  <span className="text-sm sm:text-base font-semibold">✅ 불만족 시 100% 환불 (3일 이내)</span>
+                </li>
+              </ul>
+
+              <button
+                onClick={() => setShowPrivacyNotice(true)}
+                className="w-full bg-slate-900 text-white py-4 sm:py-5 rounded-2xl text-base sm:text-xl font-bold hover:bg-slate-800 active:scale-98 transition-all shadow-lg"
+              >
+                🚀 {selectedProduct.name} 신청하기
+              </button>
+              <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-slate-400 italic">
+                ⚠️ {currentMonth}월 {lastDayOfMonth}일 이후 정상가로 환원됩니다.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -781,7 +835,7 @@ export default function Home() {
                 <i className="fas fa-chevron-down text-accent group-open:rotate-180 transition-transform flex-shrink-0 text-lg sm:text-xl"></i>
               </summary>
               <p className="mt-5 sm:mt-6 text-slate-800 leading-relaxed text-base sm:text-lg md:text-xl font-medium">
-                39,000원 결제 후 추가 비용은 일체 발생하지 않습니다.<br />
+                선택한 상품 결제 후 추가 비용은 일체 발생하지 않습니다.<br />
                 부적 구매나 추가 상담 권유는 절대 하지 않습니다.
               </p>
             </details>
@@ -1060,10 +1114,9 @@ export default function Home() {
                 <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-3">제5조 (서비스 이용 요금)</h3>
                 <p className="mb-2">서비스 이용 요금은 다음과 같습니다:</p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>1인 기준: 39,000원 (정상가 99,000원)</li>
-                  <li>2인 기준: 70,000원 (정상가 198,000원)</li>
-                  <li>3인 기준: 100,000원 (정상가 297,000원)</li>
-                  <li>4인 기준: 125,000원 (정상가 396,000원)</li>
+                  <li>기본사주: 9,900원 (정상가 29,000원)</li>
+                  <li>1인 종합사주: 29,800원 (정상가 59,000원)</li>
+                  <li>2인 종합사주: 55,000원 (정상가 99,000원)</li>
                 </ul>
                 <p className="mt-2">할인 가격은 한정 기간 동안 제공되며, 기간 종료 후 정상가로 환원될 수 있습니다.</p>
               </div>
@@ -1132,37 +1185,52 @@ export default function Home() {
             </div>
 
             <div className="p-4 sm:p-8">
-              {/* 인원 선택 */}
+              {/* 상품 선택 */}
               <div className="mb-6 sm:mb-8">
-                <div className="text-center mb-4">
-                  <label className="block text-sm font-medium text-slate-700 mb-1">분석 인원 선택</label>
-                  <p className="text-xs text-slate-500">인원이 많을수록 할인율이 높아집니다</p>
+                <div className="text-center mb-3 sm:mb-4">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">상품 선택</label>
+                  <p className="text-xs text-slate-500">원하시는 상품을 선택해주세요</p>
                 </div>
-                <div className="grid grid-cols-4 gap-2 sm:gap-3">
-                  {priceTable.map((item) => (
+                <div className="grid grid-cols-1 gap-2 sm:gap-3">
+                  {products.map((product, idx) => (
                     <button
-                      key={item.people}
+                      key={product.id}
                       type="button"
-                      onClick={() => setNumberOfPeople(item.people)}
-                      className={`py-3 sm:py-4 rounded-xl font-bold transition-all ${
-                        numberOfPeople === item.people
-                          ? 'bg-accent text-slate-900 shadow-lg scale-105'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      onClick={() => setSelectedProductIdx(idx)}
+                      className={`relative flex items-center justify-between px-4 py-3 sm:py-4 rounded-xl border-2 font-medium transition-all text-left ${
+                        selectedProductIdx === idx
+                          ? 'border-accent bg-accent/5 shadow-sm'
+                          : 'border-slate-200 bg-white hover:border-slate-300'
                       }`}
                     >
-                      <div className="text-lg sm:text-xl">{item.people}인</div>
-                      <div className="text-xs sm:text-sm mt-1">{item.discount}%</div>
+                      <div className="flex items-center gap-3">
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                          selectedProductIdx === idx ? 'border-accent bg-accent' : 'border-slate-300'
+                        }`}>
+                          {selectedProductIdx === idx && <div className="w-1.5 h-1.5 rounded-full bg-slate-900"></div>}
+                        </div>
+                        <div>
+                          <span className="text-slate-900 font-bold text-sm sm:text-base">{product.name}</span>
+                          <span className="ml-2 text-xs text-slate-500">{product.description}</span>
+                        </div>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <span className="text-base sm:text-lg font-bold text-slate-900">₩{product.price.toLocaleString()}</span>
+                        {product.badge && (
+                          <span className="ml-2 bg-accent text-slate-900 text-[9px] font-bold px-1.5 py-0.5 rounded-full">⭐{product.badge}</span>
+                        )}
+                      </div>
                     </button>
                   ))}
                 </div>
-                <div className="mt-4 p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl text-center border border-amber-200">
-                  <p className="text-slate-600 text-sm mb-1">
-                    <span className="line-through text-slate-400 text-xs sm:text-sm">₩{currentPricing.originalPrice.toLocaleString()}</span>
+                <div className="mt-3 p-3 sm:p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl text-center border border-amber-200">
+                  <p className="text-slate-600 text-sm">
+                    <span className="line-through text-slate-400 text-xs">₩{selectedProduct.originalPrice.toLocaleString()}</span>
                     <i className="fas fa-arrow-right text-accent mx-2 text-xs"></i>
-                    <span className="text-2xl sm:text-3xl font-bold text-slate-900">₩{currentPricing.price.toLocaleString()}</span>
+                    <span className="text-xl sm:text-2xl font-bold text-slate-900">₩{selectedProduct.price.toLocaleString()}</span>
                   </p>
-                  <p className="text-xs text-amber-700 font-medium">
-                    ₩{(currentPricing.originalPrice - currentPricing.price).toLocaleString()} 절약!
+                  <p className="text-xs text-amber-700 font-medium mt-0.5">
+                    ₩{(selectedProduct.originalPrice - selectedProduct.price).toLocaleString()} 절약!
                   </p>
                 </div>
               </div>
@@ -1287,7 +1355,7 @@ export default function Home() {
                   disabled={isSubmitting}
                   className="w-full bg-accent hover:bg-accent/90 active:scale-98 text-slate-900 py-4 sm:py-5 rounded-2xl text-lg sm:text-xl font-bold transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? '처리 중...' : `₩${currentPricing.price.toLocaleString()} 결제하고 인생 지도 받기`}
+                  {isSubmitting ? '처리 중...' : `₩${selectedProduct.price.toLocaleString()} 결제하고 인생 지도 받기`}
                 </button>
 
                 <p className="text-xs sm:text-sm text-slate-500 mt-4 text-center">
@@ -1320,7 +1388,7 @@ export default function Home() {
       {/* Sticky Mobile CTA */}
       <div className="sticky-cta p-3 sm:p-5 md:hidden safe-area-inset-bottom">
         <button onClick={() => setShowPrivacyNotice(true)} className="w-full bg-slate-900 text-white py-3.5 sm:py-5 rounded-xl font-bold shadow-xl active:scale-98 transition-transform text-sm sm:text-lg min-h-[52px]">
-          🚀 1인 ₩39,000부터 시작하기
+          🚀 기본사주 ₩9,900부터 시작하기
         </button>
       </div>
     </div>
