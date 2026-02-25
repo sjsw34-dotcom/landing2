@@ -1338,17 +1338,24 @@ export default function Home() {
                 </div>
 
                 {/* 궁금한 점 */}
-                <div className="text-left">
-                  <label className="block text-sm font-medium text-slate-700 mb-2">궁금한 점 (선택)</label>
-                  <textarea
-                    name="question"
-                    placeholder="평소 궁금한 내용을 적어주세요&#10;예: 올해 이직 운세, 재물운, 건강운 등"
-                    rows={4}
-                    value={formData.question}
-                    onChange={(e) => handleInputChange('question', e.target.value)}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent text-base resize-none"
-                  ></textarea>
-                </div>
+                {selectedProduct.id === 'basic' ? (
+                  <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-left">
+                    <p className="text-sm font-medium text-slate-500">궁금한 점 (선택)</p>
+                    <p className="text-sm text-slate-400 mt-1">기본사주에는 질문권이 포함되어 있지 않습니다. 질문을 남기시려면 1인 종합사주 이상을 선택해 주세요.</p>
+                  </div>
+                ) : (
+                  <div className="text-left">
+                    <label className="block text-sm font-medium text-slate-700 mb-2">궁금한 점 (선택)</label>
+                    <textarea
+                      name="question"
+                      placeholder="평소 궁금한 내용을 적어주세요&#10;예: 올해 이직 운세, 재물운, 건강운 등"
+                      rows={4}
+                      value={formData.question}
+                      onChange={(e) => handleInputChange('question', e.target.value)}
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent text-base resize-none"
+                    ></textarea>
+                  </div>
+                )}
 
                 <button
                   type="submit"
